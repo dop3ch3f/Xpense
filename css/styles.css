@@ -4,24 +4,30 @@ body {
 hr {
     height: 10px;
     border: 0;
-    box-shadow: inset 0 10px 10px -10px rgba(0,0,0,0.5);
+    box-shadow: inset 0 10px 10px -10px rgba(0,0,0,0.5) !important;
 }
 
 .is-outlined {
     color: purple;
     border-color: purple;
+    box-shadow: 2px rgba(0,0,0,0.2) !important;
+    transition: 0.3s;
 }
 .is-outlined:hover {
     color: whitesmoke;
     background-color: purple;
+    box-shadow: 2px rgba(0,0,0,0.2) !important;
 }
 .no-outline {
     color:whitesmoke;
     background-color: purple;
+    box-shadow: 2px rgba(0,0,0,0.2) !important;
+    transition: 0.3s;
 }
 
 .no-outline:hover {
     color: purple;
     border-color: purple;
     background-color: whitesmoke;
+    box-shadow: 2px rgba(0,0,0,0.2) !important;
 }
