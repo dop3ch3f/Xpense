@@ -1,0 +1,27 @@
+body {
+    font-family: 'Quicksand';
+}
+hr {
+    height: 10px;
+    border: 0;
+    box-shadow: inset 0 10px 10px -10px rgba(0,0,0,0.5);
+}
+
+.is-outlined {
+    color: purple;
+    border-color: purple;
+}
+.is-outlined:hover {
+    color: whitesmoke;
+    background-color: purple;
+}
+.no-outline {
+    color:whitesmoke;
+    background-color: purple;
+}
+
+.no-outline:hover {
+    color: purple;
+    border-color: purple;
+    background-color: whitesmoke;
+}
