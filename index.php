@@ -44,12 +44,12 @@
 </head>
 
 <body>
-  <section class="hero is-medium">
+  <section class="hero is-fullheight">
     <div class="hero-head">
       <header class="navbar">
         <div class="container ">
           <div class="navbar-brand ">
-            <img src="./img/XPENSE LOGO.png" style="padding-top:20px; height:100px !important;" width="160px" alt="Logo">
+            <img src="./img/XPENSE LOGO.png" style="padding-top:20px; height:100px !important;width:160px;"  alt="Logo">
           </div>
         </div>
       </header>
@@ -129,7 +129,7 @@
     </div>
   </section>
   <hr/>
-  <section class="hero is-medium">
+  <section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container has-text-left">
         <h1 class="title is-size-2" style="font-weight:bolder;">You have an account?</h1>
