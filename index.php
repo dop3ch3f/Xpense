@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Xpense_hub</title>
+  <title>Xpense Hub Home</title>
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href='./css/bulma.css' rel="stylesheet" />
   <link href='./css/styles.css' rel="stylesheet" />
@@ -122,6 +122,8 @@
           </p>
         </div>
         <br/>
+        <br/>
+        <a href="./php/admin/main.php">Take a tour</a>
         <br/>
         <button class="button no-outline is-large" id="inviteUser_form_button" onclick="submitCall('inviteUser')" >Invite</button>
         </form>

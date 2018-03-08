@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Xpense_hub Login</title>
+  <title>Xpense Hub Login</title>
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href='../../css/bulma.css' rel="stylesheet" />
   <link href='../../css/styles.css' rel="stylesheet" />
@@ -27,7 +27,7 @@
               <h1 class="is-size-4">Username</h1>
             </label>
             <div class="control has-icons-left">
-              <input class="input is-large" type="text">
+              <input class="input is-medium" type="text">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -38,7 +38,7 @@
               <h1 class="is-size-4">Password</h1>
             </label>
             <div class="control has-icons-left">
-              <input class="input is-large" type="password">
+              <input class="input is-medium" type="password">
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>

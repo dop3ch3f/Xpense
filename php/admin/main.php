@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
-    Atlas CC
+    Home
   </title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link href='../css/materialize.min.css' rel="stylesheet" />
-  <link href='../css/styles.css' rel="stylesheet" />
+  <link href='../../css/materialize.min.css' rel="stylesheet" />
+  <link href='../../css/styles.css' rel="stylesheet" />
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-  <script src='../js/jquery-3.3.1.min.js'></script>
-  <script src='../js/materialize.min.js'></script>
+  <script src='../../js/jquery-3.3.1.min.js'></script>
+  <script src='../../js/materialize.min.js'></script>
   <script>
     $(document).ready(function () {
       $('.button-collapse').sideNav({
@@ -39,14 +39,6 @@
         </li>
 
       </ul>
-      <ul id="nav-mobile" class="right ">
-        <li>
-          <a href="#">
-            <i class="material-icons" style="color:purple;">notifications</i>
-          </a>
-        </li>
-
-      </ul>
     </div>
   </nav>
   <ul id="slide-out" class="side-nav">
@@ -54,22 +46,22 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
         </a>
         <h6>John Doe</h6>
         <h6>jdandturk@gmail.com</h6>
       </div>
     </li>
-    <hr/>
+    <br/>
     <li>
-      <a href="#!">
+      <a href="./main.php">
         <i class="material-icons waves-effect" style="color:purple;">home</i>Home</a>
     </li>
     <li>
       <div class="divider"></div>
     </li>
     <li>
-      <a href="#!">
+      <a href="./manage_teams.php">
         <i class="material-icons waves-effect" style="color:purple;">edit</i>Manage Teams</a>
     </li>
 
@@ -77,15 +69,7 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="#!">
-        <i class="material-icons waves-effect" style="color:purple;">people</i>Team Profile</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
-      <a href="#!">
+      <a href="./my_profile.php">
         <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
     </li>
 
@@ -93,7 +77,7 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="#!">
+      <a href="./actions/login.php?logout=1">
         <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
     </li>
 
@@ -106,9 +90,10 @@
   <div class="section container">
     <div class="row">
       <div class="col s12 m6 l6">
-        <div class="card hoverable">
+        <a href="./expenses.php">
+        <div class="card hoverable" href="./expenses.php">
           <div class="card-image">
-            <img src="../img/expenses.jpg" width="220" height="250">
+            <img src="../../img/expenses.jpg" width="220" height="250">
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -117,11 +102,14 @@
 
           </div>
         </div>
+      </a>
+        
       </div>
       <div class="col s12 m6 l6">
+        <a href="./receipts.php">
         <div class="card hoverable">
           <div class="card-image">
-            <img src="../img/receipts.jpg" width="220" height="250">
+            <img src="../../img/receipts.jpg" width="220" height="250">
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -130,13 +118,16 @@
 
           </div>
         </div>
+      </a>
+        
       </div>
     </div>
     <div class="row">
       <div class="col s12 m6 l6">
+        <a href="./transactions.php">
         <div class="card hoverable">
           <div class="card-image">
-            <img src="../img/transaction.jpg" width="220" height="250">
+            <img src="../../img/transaction.jpg" width="220" height="250">
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -145,11 +136,14 @@
 
           </div>
         </div>
+      </a>
+        
       </div>
       <div class="col s12 m6 l6">
+        <a href="./all_transaction.php">
         <div class="card hoverable">
           <div class="card-image">
-            <img src="../img/alltransaction.jpg" width="220" height="250">
+            <img src="../../img/alltransaction.jpg" width="220" height="250">
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -158,6 +152,8 @@
 
           </div>
         </div>
+      </a>
+        
       </div>
     </div>
   </div>
