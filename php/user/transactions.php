@@ -9,11 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
-        Receipts
+        Transactions
     </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href='../../css/materialize.min.css' rel="stylesheet" />
     <link href='../../css/styles.css' rel="stylesheet" />
+    
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
     <script src='../../js/jquery-3.3.1.min.js'></script>
     <script src='../../js/materialize.min.js'></script>
@@ -38,7 +39,7 @@
 <body>
     <nav>
         <div class="nav-wrapper white">
-            <a href="#" class="brand-logo center black-text">Receipts</a>
+            <a href="#" class="brand-logo center black-text">Accepted Transactions</a>
             <ul id="nav-mobile" class="left ">
                 <li>
                     <a data-activates="slide-out" class="button-collapse show-on-large">
@@ -54,7 +55,7 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="../img/XPENSE LOGO.png" width="100px" height="100px">
         </a>
         <h6>John Doe</h6>
         <h6>jdandturk@gmail.com</h6>
@@ -65,14 +66,6 @@
       <a href="./main.php">
         <i class="material-icons waves-effect" style="color:purple;">home</i>Home</a>
     </li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
-      <a href="./manage_teams.php">
-        <i class="material-icons waves-effect" style="color:purple;">edit</i>Manage Teams</a>
-    </li>
-
     <li>
       <div class="divider"></div>
     </li>
@@ -112,30 +105,33 @@
             <table class="responsive bordered highlight">
         <thead>
           <tr>
-              <th>RECEIPT IMAGE</th>
-              <th>TEAM MEMBER</th>
+              
               <th>ITEM NAME</th>
+              <th>ITEM PRICE</th>
               <th>DATE REQUESTED</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td><img class="materialboxed center-align" width="100" height="100" src="../../img/expenses.jpg"></td>  
-            <td>Alvin</td>
+            
             <td>Eclair</td>
+            <td>$0.87</td>
             <td>May 5, 2000</td>
+            
+            
           </tr>
           <tr>
-            <td><img class="materialboxed" width="100" height="100" src="../../img/receipts.jpg"></td>  
-            <td>Alan</td>
+            
             <td>Jellybean</td>
+            <td>$3.76</td>
             <td>May 5, 2000</td>
+           
           </tr>
           <tr>
-            <td><img class="materialboxed" width="100" height="100" src="../../img/transaction.jpg"></td>  
-            <td>Jonathan</td>
+            
             <td>Lollipop</td>
+            <td>$7.00</td>
             <td>May 5, 2000</td>
           </tr>
         </tbody>
@@ -156,6 +152,5 @@
       </div>
     </div>
 </body>
-
 
 </html>

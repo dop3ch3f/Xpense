@@ -64,14 +64,6 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="./manage_teams.php">
-        <i class="material-icons waves-effect" style="color:purple;">edit</i>Manage Teams</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
       <a href="./my_profile.php">
         <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
     </li>

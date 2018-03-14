@@ -1,3 +1,6 @@
+<?php
+  session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +85,7 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="./actions/login.php?logout=1">
+      <a href="../actions/login.php?logout=1">
         <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
     </li>
 

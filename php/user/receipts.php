@@ -69,14 +69,6 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="./manage_teams.php">
-        <i class="material-icons waves-effect" style="color:purple;">edit</i>Manage Teams</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
       <a href="./my_profile.php">
         <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
     </li>
@@ -113,7 +105,6 @@
         <thead>
           <tr>
               <th>RECEIPT IMAGE</th>
-              <th>TEAM MEMBER</th>
               <th>ITEM NAME</th>
               <th>DATE REQUESTED</th>
           </tr>
@@ -122,19 +113,19 @@
         <tbody>
           <tr>
             <td><img class="materialboxed center-align" width="100" height="100" src="../../img/expenses.jpg"></td>  
-            <td>Alvin</td>
+            
             <td>Eclair</td>
             <td>May 5, 2000</td>
           </tr>
           <tr>
             <td><img class="materialboxed" width="100" height="100" src="../../img/receipts.jpg"></td>  
-            <td>Alan</td>
+            
             <td>Jellybean</td>
             <td>May 5, 2000</td>
           </tr>
           <tr>
             <td><img class="materialboxed" width="100" height="100" src="../../img/transaction.jpg"></td>  
-            <td>Jonathan</td>
+            
             <td>Lollipop</td>
             <td>May 5, 2000</td>
           </tr>
@@ -150,7 +141,7 @@
       <div class="row">
           <div class="container">
               <div class="col m12 l12 s12">
-              <button class="waves-effect waves-light btn purple" onclick="printDiv('printable');">Generate Report</button>
+              <button class="waves-effect waves-light btn purple"><i class="material-icons">add</i></button>
               </div>
           </div>
       </div>

@@ -1,3 +1,6 @@
+<?php
+  session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +86,7 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="./actions/login.php?logout=1">
+      <a href="../actions/login.php?logout=1">
         <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
     </li>
 
@@ -94,6 +97,16 @@
     <br/>
     <br/>
     <div class="section container" id="printable">
+    <div class="row">
+    <form class="col s12 l12 m12">
+        <div class="input-field col m10 s10 l10">
+          <input id="icon_prefix" type="text" class="">
+        </div>
+        <div class="input-field col m2 s2 l2">
+          <a class="waves-effect purple waves-light btn large"><i class="material-icons">search</i></a>
+        </div>
+    </form>
+  </div>
         <div class="row center">
             <div class="col s12 l12 m12 ">
             

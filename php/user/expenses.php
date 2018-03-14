@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
-        Receipts
+        Expenses
     </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href='../../css/materialize.min.css' rel="stylesheet" />
@@ -38,7 +38,7 @@
 <body>
     <nav>
         <div class="nav-wrapper white">
-            <a href="#" class="brand-logo center black-text">Receipts</a>
+            <a href="#" class="brand-logo center black-text">Expenses</a>
             <ul id="nav-mobile" class="left ">
                 <li>
                     <a data-activates="slide-out" class="button-collapse show-on-large">
@@ -69,14 +69,6 @@
       <div class="divider"></div>
     </li>
     <li>
-      <a href="./manage_teams.php">
-        <i class="material-icons waves-effect" style="color:purple;">edit</i>Manage Teams</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
       <a href="./my_profile.php">
         <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
     </li>
@@ -95,7 +87,7 @@
   </ul>
     <br/>
     <br/>
-    <div class="section container" id="printable">
+    <div class="section container  " id="printable">
     <div class="row">
     <form class="col s12 l12 m12">
         <div class="input-field col m10 s10 l10">
@@ -106,42 +98,49 @@
         </div>
     </form>
   </div>
-        <div class="row center">
-            <div class="col s12 l12 m12 ">
-            
+        <div class="row">
+            <div class="col s12 m12 l12">
             <table class="responsive bordered highlight">
         <thead>
           <tr>
-              <th>RECEIPT IMAGE</th>
               <th>TEAM MEMBER</th>
               <th>ITEM NAME</th>
+              <th>ITEM PRICE</th>
               <th>DATE REQUESTED</th>
+              <th></th>
+              <th></th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td><img class="materialboxed center-align" width="100" height="100" src="../../img/expenses.jpg"></td>  
             <td>Alvin</td>
             <td>Eclair</td>
+            <td>$0.87</td>
             <td>May 5, 2000</td>
+            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
+            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
+            
           </tr>
           <tr>
-            <td><img class="materialboxed" width="100" height="100" src="../../img/receipts.jpg"></td>  
             <td>Alan</td>
             <td>Jellybean</td>
+            <td>$3.76</td>
             <td>May 5, 2000</td>
+            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
+            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
           </tr>
           <tr>
-            <td><img class="materialboxed" width="100" height="100" src="../../img/transaction.jpg"></td>  
             <td>Jonathan</td>
             <td>Lollipop</td>
+            <td>$7.00</td>
             <td>May 5, 2000</td>
+            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
+            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
           </tr>
         </tbody>
       </table>
-            
-            
+            </div>
         </div>
     </div>
     <br/>
@@ -156,6 +155,4 @@
       </div>
     </div>
 </body>
-
-
 </html>
