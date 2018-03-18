@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,19 +36,18 @@
             $('#third').fadeIn(1000);
           });
           });
-          let i = 1
+          let i = 1;
           function addInput() {
             if(i<3){
               i += 1;
-              var newInput = '<div class="field is-grouped"> <div class = "control is-expanded" ><input class = "input is-medium"id="r'+i+'" name = "r'+i+'" type = "email"placeholder = "Enter Email" ></div></div>';
-              $('#first_input').before(newInput);
+              let newInput = '<br/><input class="input is-medium" id="r'+i+'" name="r'+i+'" type="email" placeholder="Enter Email" />';
+              $('#r1').after(newInput);
             }else{
-              alert("You are only allowed to start with 3 for starters");
+              alert("You are only allowed to start with 3 team members");
             }   
           }
   </script>
 </head>
-
 <body>
   <section class="hero is-fullheight">
     <div class="hero-head">
@@ -62,6 +60,7 @@
       </header>
     </div>
     <div class="hero-body">
+    <form method="POST" action="./php/actions/register_admin.php" id="inviteUser_form">
       <div class="container has-text-centered" id="intro">
         <h1 class="title is-size-2" style="font-weight:bolder;">
           Keep track of how money leaves your company.
@@ -73,10 +72,15 @@
       </div>
       <div class="container has-text-centered" id="first">
         <div class="field">
-        <form method="POST" action="./php/actions/register_admin.php" id="inviteUser_form">
-          <div class="control">
-            <input class="input is-large" type="email" name="email" placeholder="Enter Your Email">
+    
+        <div class="control">
+            <input class="input is-large" type="text" name="full_name" placeholder="John Doe">
           </div>
+          <br/>
+          <div class="control">
+            <input class="input is-large" type="email" name="email" placeholder="any@any.com">
+          </div>
+          <br/>
           <div class="control">
             <input class="input is-large" type="password" name="password" placeholder="Enter Your Password">
           </div>
@@ -122,7 +126,7 @@
         
         <div class="field is-grouped" id="first_input">
           <div class="control is-expanded">
-            <input class="input is-medium" id="1" type="email" placeholder="Enter Email">
+            <input class="input is-medium" id="r1" name="r1" type="email" placeholder="Enter Email">
           </div>
           <p class="control">
             <a class="button is-medium no-outline is-rounded" onclick="addInput()">
@@ -137,9 +141,10 @@
         <a href="./php/admin/main.php">Take a tour</a>
         <br/>
         <button class="button no-outline is-large" id="inviteUser_form_button" onclick="submitCall('inviteUser')" >Invite</button>
-        </form>
+   
       </div>
     </div>
+    </form>
   </section>
   <hr/>
   <section class="hero is-fullheight">

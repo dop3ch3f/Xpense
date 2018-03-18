@@ -148,7 +148,7 @@
                 </div>
                 <br/>
                 <div class="center-align">
-                    <button class="btn btn-medium waves-effect purple center">
+                    <button class="btn btn-medium waves-effect purple center modal-trigger" href="#modal2">
                         <i class="material-icons">add</i>
                     </button>
                 </div>
@@ -158,6 +158,69 @@
     </div>
 </body>
 <div id="modal1" class="modal">
+    <div class="modal-content">
+        <div class="center-align">
+                <h5>Edit Teams</h5>
+        </div>
+        
+        <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width">
+            <li class="tab col s6">
+                <a href="#test-swipe-1" class=" black-text">Profile</a>
+            </li>
+            <li class="tab col s6">
+                <a href="#test-swipe-2" class="black-text">Team Members</a>
+            </li>
+        </ul>
+        <div class="tabs-content carousel initialized">
+                <div id="test-swipe-1" class="col s12">
+                        <br/>
+                        <br/>
+                        <div class="input-field col s12">
+                            <input id="t_name" type="text" class="validate">
+                            <label for="t_name">Team Name</label>
+                        </div>
+                    </div>
+                    <div id="test-swipe-2" class="col s12">
+                        <br/>
+                        <br/>
+            
+                        <ul class="collection ">
+                            <li class="collection-item">
+                                <div>Alvin
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">cancel</i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>Alvin
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">cancel</i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>Alvin
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">cancel</i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <div>Alvin
+                                    <a href="#!" class="secondary-content">
+                                        <i class="material-icons">cancel</i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+            
+                    </div>
+        </div>
+        
+    </div>
+</div>
+<div id="modal2" class="modal">
     <div class="modal-content">
         <div class="center-align">
                 <h5>Edit Teams</h5>

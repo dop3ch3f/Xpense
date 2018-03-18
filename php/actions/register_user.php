@@ -1,112 +1,94 @@
 <?php
 include "../actions/conn.php";
-
-if($_SERVER["REQUEST_METHOD"]=="GET"){
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
     extract($_GET);
-    $query="SELECT * FROM `Admin` WHERE `admin_id`='$admin' LIMIT 1";
-    if(mysqli_query($link,$query)){
-        $row->mysqli_fetch_assoc($link,$query);
+    $query = "SELECT * FROM `Admin` WHERE `admin_id`='$admin'";
+    if ($result = mysqli_query($link, $query)) {
+        $row = mysqli_fetch_assoc($result);
+        if ($row) {
+            $admin_id = $row["admin_id"];
+            $query1 = "SELECT * FROM `Teams` WHERE `team_id`='$team_id'";
+            if($r = mysqli_query($link,$query1)){
+                $row1 = mysqli_fetch_assoc($r);
+                $team_name = $r['team_name'];
+            }
+        }
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Xpense Hub Register</title>
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-  <link href='./css/bulma.css' rel="stylesheet" />
-  <link href='./css/styles.css' rel="stylesheet" />
-  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-  <script src='./js/jquery-3.3.1.min.js'></script>
-  <script src='./js/index.js'></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Xpense Hub Register</title>
+        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+        <link href='../../css/bulma.css' rel="stylesheet" />
+        <link href='../../css/styles.css' rel="stylesheet" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+        <script src='../../js/jquery-3.3.1.min.js'></script>
+        <script src='../../js/index.js'></script>
+        <script src='../../js/ajaxhelper.js'></script>
+    </head>
 
-<body>
-  <section class="hero is-fullheight">
-    <div class="hero-head">
-      <header class="navbar">
-        <div class="container ">
-          <div class="navbar-brand ">
-            <a class="navber-item">Xpense Hub</a>
-          </div>
-        </div>
-      </header>
-    </div>
-    <div class="hero-body">
-      <div class="container has-text-centered" id="first">
-        <div class="field">
-        <form method="POST" action="./php/actions/register_admin.php" id="inviteUser_form">
-          <div class="control">
-            <input class="input is-large" type="email" name="email" placeholder="Enter Your Email">
-          </div>
-          <div class="control">
-            <input class="input is-large" type="password" name="password" placeholder="Enter Your Password">
-          </div>
-          <br/>
-          <a class="button is-large is-rounded no-outline" id="first_button">
-            <span class="icon">
-              <i class="fas fa-angle-right"></i>
-            </span>
-          </a>
-        </div>
-      </div>
-      <div class="container has-text-centered" id="second">
-        <div class="field">
-          <div class="control">
-            <input class="input is-large" type="text" name="team" placeholder="Create a Team Name">
-          </div>
-          <br/>
-          <div class="buttons is-centered">
-            <a class="button is-large is-rounded no-outline" id="second_button_prev">
-              <span class="icon">
-                <i class="fas fa-angle-left"></i>
-              </span>
-            </a>
-            <a class="button is-large is-rounded no-outline" id="second_button_next">
-              <span class="icon">
-                <i class="fas fa-angle-right"></i>
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="container has-text-centered" id="third">
-        <span class="icon">
-          <i class="fas fa-users" style="font-size:150px;"></i>
-        </span>
-        <br/>
-        <h1 class="title is-size-2">Add Team Members</h1>
-        <h2 class="subtitle is-size-4">
-          Send email invites to those you feel are the perfect fit.
-        </h2>
-        <div id="inviteUser_form_response"></div>
-        <br/>
-        
-        <div class="field is-grouped" id="first_input">
-          <div class="control is-expanded">
-            <input class="input is-medium" id="1" type="email" placeholder="Enter Email">
-          </div>
-          <p class="control">
-            <a class="button is-medium no-outline is-rounded" onclick="addInput()">
-              <span class="icon">
-                <i class="fas fa-plus"></i>
-              </span>
-            </a>
-          </p>
-        </div>
-        <br/>
-        <br/>
-        <a href="./php/admin/main.php">Take a tour</a>
-        <br/>
-        <button class="button no-outline is-large" id="inviteUser_form_button" onclick="submitCall('inviteUser')" >Invite</button>
-        </form>
-      </div>
-    </div>
-  </section>
-</body>
+    <body>
+        <section class="hero is-fullheight">
+            <div class="hero-head">
+                <header class="navbar">
+                    <div class="container ">
+                        <div class="navbar-brand ">
+                            <h5 class=" is-size-4 is-dark" style="padding-top:20px;">Xpense Hub</h5>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                <h2 class="subtitle">You are welcome to join the <?php echo $r["team_name"]; ?> team created by <?php echo $row["full_name"]; ?> to register fill the form below</h2>
+                <br/>
+                    <div class="field">
+                        <form method="POST" action="./reg_user.php" >
+                            <div class="field">
+                                <label class="label">Full Name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="John Doe" name="full_name">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input class="input" type="email" placeholder="any@any.com" name="email">
+                                </div>
+                            </div>
+                            <div class="field" style="display:none;">
+                                <div class="control">
+                                    <input class="input" type="text" name="team_id" value="<?php echo $row["team_id"]; ?>" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input class="input" type="password" name="password" >
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Confirm Password</label>
+                                <div class="control">
+                                    <input class="input" type="password" name="cpassword">
+                                </div>
+                            </div>
+                            <div class="field ">
+                                <div class="control">
+                                    <button type="submit" class="button  is-outlined">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+    </body>
 
-</html>
+    </html>

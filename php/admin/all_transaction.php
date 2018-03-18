@@ -1,5 +1,20 @@
 <?php
-  session_start(); 
+  session_start();
+  extract($_SESSION);
+  print_r($_SESSION);
+  
+  $q1 = "SELECT * FROM `Admin` WHERE `team_id`='$team_id'";
+        $q2 = "SELECT * FROM `Teams` WHERE `team_id`='$team_id'";
+        if ($result1 = mysqli_query($link, $q1) && $result2 = mysqli_query($link,$q2)) {
+            echo "Admin registered successfully";
+            while ($row = mysqli_fetch_assoc($result1) && $row1 = mysqli_fetch_assoc($result2)) {
+                mailUser($row['admin_id'], $row['full_name'], $row1['team_name'], $r1, $r2, $r3);
+                $_SESSION['admin_id'] = $row['admin_id'];
+                $_SESSION['team_id'] = $row1['team_id'];
+                header("../admin/main.php");
+                break;
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
