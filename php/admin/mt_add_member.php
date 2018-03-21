@@ -3,26 +3,27 @@ include "../actions/conn.php";
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
-    print_r($_POST);
     #generate date
     $date = date("d:m:y");
     #generate team id
     $team_id = "" . rand() . $team_name . rand();
     #queries
-    $qq = "INSERT INTO `Teams`( `team_id`,`team_name`, `date_created`) VALUES ('$team_id','$team','$date')";
-    $query = "INSERT INTO `Admin`(`team_id`, `full_name`, `email`, `password`, `date_created`) VALUES ('$team_id','$full_name','$email','$password','$date')";
+    $qq = "INSERT INTO `Teams`( `team_id`,`team_name`, `date_created`) VALUES ('$team_id','$team_name','$date')";
     #logging process
-    if (mysqli_query($link, $query) && mysqli_query($link, $qq)) {
-        $q1 = "SELECT * FROM `Admin` WHERE `team_id`='$team_id'";
-        $q2 = "SELECT * FROM `Teams` WHERE `team_id`='$team_id'";
-        if ($result1 = mysqli_query($link, $q1) && $result2 = mysqli_query($link, $q2)) {
+    if (mysqli_query($link, $qq)) {
+        $q1 = "SELECT * FROM `admin_team` WHERE `admin_id`='$admin_id'";
+        if ($result1 = mysqli_query($link, $q1)) {
             echo "Admin registered successfully";
-            while ($row = mysqli_fetch_assoc($result1) && $row1 = mysqli_fetch_assoc($result2)) {
-                mailUser($row['admin_id'], $row['full_name'], $row1['team_name'], $r1, $r2, $r3);
+            while ($row = mysqli_fetch_assoc($result1)) {
+                $q2 = "INSERT INTO `Admin`(`team_id`, `full_name`, `email`, `password`, `date_created`) VALUES ('$team_id','".$row['full_name']."','".$row['email']."','".$row['password']."','$date')";
+                if(mysqli_query($link,$q2)){
+                    mailUser($admin_id, $row['full_name'], $team_name, $f_email, $s_email, $t_email);
+                    $_SESSION['admin_id'] = $admin_id;
+                    $_SESSION['team_id'] = $team_id;
+                    header("../admin/main.php");
+                }  
             }
-            $_SESSION['admin_id'] = $row['admin_id'];
-            $_SESSION['team_id'] = $row1['team_id'];
-            header("../admin/main.php");
+            
         }
 
     }

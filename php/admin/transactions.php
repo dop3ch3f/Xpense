@@ -1,5 +1,13 @@
 <?php
-  session_start(); 
+include '../actions/conn.php';
+session_start();
+extract($_SESSION);
+
+$q1 = "SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
+$q2 = "SELECT * FROM `admin_transactions` WHERE `status` = 'Approved'";
+$result = mysqli($link, $q1);
+$result1 = mysqli($link, $q2);
+$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +22,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href='../../css/materialize.min.css' rel="stylesheet" />
     <link href='../../css/styles.css' rel="stylesheet" />
-    
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
     <script src='../../js/jquery-3.3.1.min.js'></script>
     <script src='../../js/materialize.min.js'></script>
@@ -55,10 +63,10 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo row['full_name']; ?></h6>
+        <h6><?php echo row['email']; ?></h6>
       </div>
     </li>
     <br/>
@@ -109,43 +117,35 @@
   </div>
         <div class="row center">
             <div class="col s12 l12 m12 ">
-            
+
             <table class="responsive bordered highlight">
         <thead>
           <tr>
               <th>TEAM MEMBER</th>
               <th>ITEM NAME</th>
+              <th>ITEM DESCRIPTION</th>
               <th>ITEM PRICE</th>
               <th>DATE REQUESTED</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>May 5, 2000</td>
-            
-            
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>May 5, 2000</td>
-           
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>May 5, 2000</td>
-          </tr>
+        <?php
+
+while ($row1 = mysqli_fetch_assoc($result1)) {
+    echo "<tr>
+   <td>" . $row1["full_name"] . "</td>
+   <td>" . $row1["name"] . "</td>
+   <td>" . $row1["description"] . "</td>
+   <td>" . $row1["price"] . "</td>
+   <td>" . $row1["date_created"] . "</td>
+   </tr>";
+}
+?>
         </tbody>
       </table>
-            
-            
+
+
         </div>
     </div>
     <br/>

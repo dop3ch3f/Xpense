@@ -1,20 +1,14 @@
 <?php
+  include '../actions/conn.php';
   session_start();
   extract($_SESSION);
-  print_r($_SESSION);
   
-  $q1 = "SELECT * FROM `Admin` WHERE `team_id`='$team_id'";
-        $q2 = "SELECT * FROM `Teams` WHERE `team_id`='$team_id'";
-        if ($result1 = mysqli_query($link, $q1) && $result2 = mysqli_query($link,$q2)) {
-            echo "Admin registered successfully";
-            while ($row = mysqli_fetch_assoc($result1) && $row1 = mysqli_fetch_assoc($result2)) {
-                mailUser($row['admin_id'], $row['full_name'], $row1['team_name'], $r1, $r2, $r3);
-                $_SESSION['admin_id'] = $row['admin_id'];
-                $_SESSION['team_id'] = $row1['team_id'];
-                header("../admin/main.php");
-                break;
-            }
-        }
+  $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
+  $q2="SELECT * FROM `admin_transactions`";
+  $result = mysqli($link,$q1);
+  $result1 = mysqli($link,$q2);
+  $row = mysqli_fetch_assoc($result);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,10 +63,10 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo row['full_name'];?></h6>
+        <h6><?php echo row['email']; ?></h6>
       </div>
     </li>
     <br/>
@@ -126,35 +120,29 @@
           <tr>
               <th>TEAM MEMBER</th>
               <th>ITEM NAME</th>
+              <th>ITEM DESCRIPTION</th>
               <th>ITEM PRICE</th>
               <th>DATE REQUESTED</th>
               <th>STATUS</th>
+              <th>RECEIPT STATUS</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>May 5, 2000</td>
-            <td>Approved</td>
-            
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>May 5, 2000</td>
-            <td>Rejected</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>May 5, 2000</td>
-            <td>Approved</td>
-          </tr>
+        <?php
+
+          while($row1 = mysqli_fetch_assoc($result1)){
+             echo "<tr>
+             <td>".$row1["full_name"]."</td>
+             <td>".$row1["name"]."</td>
+             <td>".$row1["description"]."</td>
+             <td>".$row1["price"]."</td>
+             <td>".$row1["date_created"]."</td>
+             <td>".$row1["status"]."</td>
+             <td>".$row1["receipt_status"]."</td>
+             </tr>";
+          }
+        ?>
         </tbody>
       </table>
           </div>

@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
      $query="SELECT * FROM `Users` WHERE `email`=$email AND `password`=$password ";
      if(mysqli_query($link,$query)){
        if($row->mysqli_fetch_assoc($link,$query)){
-         $_SESSION['id'] = $row['user_id'];
+         $_SESSION['user_id'] = $row['user_id'];
          header("../user/main.php");
        }
      }else{
@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
      $query = "SELECT * FROM `Admin` WHERE `email`=$email AND `password`=$password ";
      if(mysqli_query($link,$query)){
       if($row->mysqli_fetch_assoc($link,$query)){
-        $_SESSION['id'] = $row['admin_id'];
+        $_SESSION['admin_id'] = $row['admin_id'];
         header("../admin/main.php");
       }
      }else{
@@ -32,6 +32,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
      }
   }
 }
+mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">

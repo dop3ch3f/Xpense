@@ -103,9 +103,11 @@
           <tr>
               
               <th>ITEM NAME</th>
+              <th>ITEM DESCRIPTION</th>
               <th>ITEM PRICE</th>
               <th>DATE REQUESTED</th>
               <th>STATUS</th>
+              <th>RECEIPT STATUS</th>
           </tr>
         </thead>
 

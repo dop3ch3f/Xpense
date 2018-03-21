@@ -1,5 +1,13 @@
 <?php
-  session_start(); 
+  include '../actions/conn.php';
+  session_start();
+  extract($_SESSION);
+  
+  $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
+  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
+  $result = mysqli($link,$q1);
+  $result1 = mysqli($link,$q2);
+  $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,10 +62,10 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo $row['full_name']; ?></h6>
+        <h6><?php echo $row['email']; ?></h6>
       </div>
     </li>
     <br/>
@@ -102,18 +110,17 @@
             <div class="card-stacked">
               <div class="card-header">
                    
-                   <img class="card-header-icon circle" src="../../img/XPENSE LOGO.png" width="150px" height="150px"/>
-                   <h5 class="card-header-text">Atlas CC</h5>
+                   <img class="card-header-icon circle" src="<?php echo $row['image_path']; ?>" width="150px" height="150px"/>
               </div>
               <div class="card-content">
                 <div class="input-field">
                  <p>Username</p>
-                 <input value="John Doe" disabled />
+                 <input value="<?php echo $row['full_name']; ?>" disabled />
                 </div>
                  <br/>
                  <div class="input-field">
                  <p>Email</p>
-                 <input value="any@any.com" disabled />
+                 <input value="<?php echo $row['email']; ?>" disabled />
                  </div>
                  
                  <br/>
@@ -126,7 +133,7 @@
              <div class="card-stacked">
                 <div class="card-content">
                   <br/>
-                  <form method="POST" action="">
+                  <form method="POST" action="./update.php">
                     <div class="file-field input-field">
                       <div class="btn purple">
                          <span>Upload Logo</span>

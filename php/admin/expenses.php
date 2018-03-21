@@ -1,5 +1,14 @@
 <?php
-  session_start(); 
+  include '../actions/conn.php';
+  session_start();
+  extract($_SESSION);
+  
+  $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
+  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
+  $result = mysqli($link,$q1);
+  $result1 = mysqli($link,$q2);
+  $row = mysqli_fetch_assoc($result);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,10 +63,10 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php  echo $row['full_name']; ?></h6>
+        <h6><?php  echo $row['email']; ?></h6>
       </div>
     </li>
     <br/>
@@ -96,16 +105,6 @@
     <br/>
     <br/>
     <div class="section container  " id="printable">
-    <div class="row">
-    <form class="col s12 l12 m12">
-        <div class="input-field col m10 s10 l10">
-          <input id="icon_prefix" type="text" class="">
-        </div>
-        <div class="input-field col m2 s2 l2">
-          <a class="waves-effect purple waves-light btn large"><i class="material-icons">search</i></a>
-        </div>
-    </form>
-  </div>
         <div class="row">
             <div class="col s12 m12 l12">
             <table class="responsive bordered highlight">
@@ -114,6 +113,7 @@
               <th>TEAM MEMBER</th>
               <th>ITEM NAME</th>
               <th>ITEM PRICE</th>
+              <th>ITEM DESCRIPTION</th>
               <th>DATE REQUESTED</th>
               <th></th>
               <th></th>
@@ -121,31 +121,21 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>May 5, 2000</td>
-            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
-            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
-            
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>May 5, 2000</td>
-            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
-            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>May 5, 2000</td>
-            <td><a class="waves-effect waves-light btn purple">Accept</a></td>
-            <td><a class="waves-effect waves-light btn purple">Decline</a></td>
-          </tr>
+           <?php  
+             while($row1 = mysqli_fetch_assoc($result1)){
+               echo "<tr>
+               <td>".$row1['full_name']."</td>
+               <td>".$row1['name']."</td>
+               <td>".$row1['price']."</td>
+               <td>".$row1['description']."</td>
+               <td>".$row1['date_created']."</td>
+               <td><form method='POST' action='./expense_post.php'>
+               <button name='accept' value=".$row1['expense_id']."class='waves-effect waves-light btn purple'>Accept</button>
+               </form></td>
+               <td><form method='POST' action='./expense_post.php'><button name='reject' value=".$row1['expense_id']." class='waves-effect waves-light btn purple'>Reject</button></form></td></tr>
+               ";
+             }
+           ?>
         </tbody>
       </table>
             </div>
