@@ -1,12 +1,13 @@
 <?php
 include "../actions/conn.php";
+ob_start();
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
     #generate date
-    $date = date("d:m:y");
+	$date = date("Y:m:d");
     #generate team id
-    $team_id = "" . rand() . $team_name . rand();
+    $team_id = "" .mt_rand().$team_name.mt_rand();
     #queries
     $qq = "INSERT INTO `Teams`( `team_id`,`team_name`, `date_created`) VALUES ('$team_id','$team_name','$date')";
     #logging process

@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Xpense Hub Home</title>
+  <title>XpenseHub Home</title>
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href='./css/bulma.css' rel="stylesheet" />
   <link href='./css/styles.css' rel="stylesheet" />
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   <script src='./js/jquery-3.3.1.min.js'></script>
-  <script src='./js/index.js'></script>
   <script>
     $(document).ready(function () {
           $('#first').hide();
@@ -36,11 +35,11 @@
             $('#third').fadeIn(1000);
           });
           });
-          let i = 1;
+          var i = 1;
           function addInput() {
             if(i<3){
               i += 1;
-              let newInput = '<br/><input class="input is-medium" id="r'+i+'" name="r'+i+'" type="email" placeholder="Enter Email" />';
+              var newInput = '<br/><input class="input is-medium" id="r'+i+'" name="r'+i+'" type="email" placeholder="Enter Email" />';
               $('#r1').after(newInput);
             }else{
               alert("You are only allowed to start with 3 team members");
@@ -54,7 +53,8 @@
       <header class="navbar">
         <div class="container ">
           <div class="navbar-brand ">
-            <img src="./img/XPENSE LOGO.png" style="padding-top:20px; height:100px !important;width:160px;"  alt="Logo">
+            
+            <h1 class="is-size-3" style="padding-top: 15px;">XpenseHub</h1>
           </div>
         </div>
       </header>
@@ -154,8 +154,6 @@
         <h2 class="subtitle is-size-4">Sign In and keep watching your team closely. Never leave a second without watching.</h2>
         <br/>
         <a class="button no-outline is-large" href="./php/actions/login.php">SIGN IN</a>
-        <br/>
-        <a href="./php/user/main.php">Employee tour</a>
       </div>
     </div>
   </section>

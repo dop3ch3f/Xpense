@@ -1,5 +1,13 @@
 <?php
-  session_start(); 
+require "../actions/conn.php";
+session_start();
+extract($_SESSION);
+
+$q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id'";
+$q2="SELECT * FROM `user_transactions` WHERE `user_id` = '$user_id' AND `status`= 'Approved'";
+$result = mysqli_query($link,$q1);
+$result1 = mysqli_query($link,$q2);
+$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +22,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href='../../css/materialize.min.css' rel="stylesheet" />
     <link href='../../css/styles.css' rel="stylesheet" />
-    
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
     <script src='../../js/jquery-3.3.1.min.js'></script>
     <script src='../../js/materialize.min.js'></script>
@@ -37,119 +45,107 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper white">
-            <a href="#" class="brand-logo center black-text">Accepted Transactions</a>
-            <ul id="nav-mobile" class="left ">
-                <li>
-                    <a data-activates="slide-out" class="button-collapse show-on-large">
-                        <i class="material-icons" style="color:purple;">menu</i>
-                    </a>
-                </li>
+<nav>
+    <div class="nav-wrapper white">
+        <a href="#" class="brand-logo center black-text">Accepted Transactions</a>
+        <ul id="nav-mobile" class="left ">
+            <li>
+                <a data-activates="slide-out" class="button-collapse show-on-large">
+                    <i class="material-icons" style="color:purple;">menu</i>
+                </a>
+            </li>
 
-            </ul>
-        </div>
-    </nav>
-    <ul id="slide-out" class="side-nav">
+        </ul>
+    </div>
+</nav>
+<ul id="slide-out" class="side-nav">
     <li>
-      <div class=" center-align">
-        <br/>
-        <a>
-          <img class="circle" src="../img/XPENSE LOGO.png" width="100px" height="100px">
-        </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
-      </div>
+        <div class=" center-align">
+            <br/>
+            <a>
+                <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
+            </a>
+            <h6><?php echo $row['full_name']; ?></h6>
+            <h6><?php echo $row['email']; ?></h6>
+            <h6><?php echo $row['team_name']; ?></h6>
+        </div>
     </li>
     <br/>
     <li>
-      <a href="./main.php">
-        <i class="material-icons waves-effect" style="color:purple;">home</i>Home</a>
+        <a href="./main.php">
+            <i class="material-icons waves-effect" style="color:purple;">home</i>Home</a>
     </li>
     <li>
-      <div class="divider"></div>
+        <div class="divider"></div>
     </li>
     <li>
-      <a href="./my_profile.php">
-        <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
+        <a href="./my_profile.php">
+            <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
     </li>
 
     <li>
-      <div class="divider"></div>
+        <div class="divider"></div>
     </li>
     <li>
-      <a href="../actions/login.php?logout=1">
-        <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
+        <a href="../actions/login.php?logout=1">
+            <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
     </li>
 
     <li>
-      <div class="divider"></div>
+        <div class="divider"></div>
     </li>
-  </ul>
-    <br/>
-    <br/>
-    <div class="section container" id="printable">
-    <div class="row">
-    <form class="col s12 l12 m12">
-        <div class="input-field col m10 s10 l10">
-          <input id="icon_prefix" type="text" class="">
-        </div>
-        <div class="input-field col m2 s2 l2">
-          <a class="waves-effect purple waves-light btn large"><i class="material-icons">search</i></a>
-        </div>
-    </form>
-  </div>
-        <div class="row center">
-            <div class="col s12 l12 m12 ">
-            
+</ul>
+<br/>
+<br/>
+<div class="section container" id="printable">
+    <div class="row center">
+        <div class="col s12 l12 m12 ">
+
             <table class="responsive bordered highlight">
-        <thead>
-          <tr>
-              
-              <th>ITEM NAME</th>
-              <th>ITEM PRICE</th>
-              <th>DATE REQUESTED</th>
-          </tr>
-        </thead>
+                <thead>
+                <tr>
+                    <th>TEAM NAME</th>
+                    <th>ITEM NAME</th>
+                    <th>ITEM DESCRIPTION</th>
+                    <th>ITEM PRICE</th>
+                    <th>DATE REQUESTED</th>
+                    <th>STATUS</th>
+                    <th>RECEIPT STATUS</th>
+                    <th>DATE APPROVED</th>
+                </tr>
+                </thead>
 
-        <tbody>
-          <tr>
-            
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>May 5, 2000</td>
-            
-            
-          </tr>
-          <tr>
-            
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>May 5, 2000</td>
-           
-          </tr>
-          <tr>
-            
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>May 5, 2000</td>
-          </tr>
-        </tbody>
-      </table>
-            
-            
+                <tbody>
+                <?php
+                while($row1 = mysqli_fetch_assoc($result1)){
+                    echo "<tr>
+              <td>".$row1["team_name"]."</td>
+              <td>".$row1["name"]."</td>
+              <td>".$row1["description"]."</td>
+              <td>".$row1["price"]."</td>
+              <td>".$row1["date_created"]."</td>
+              <td>".$row1["status"]."</td>
+              <td>".$row1["receipt_status"]."</td>
+              <td>".$row1["date_approved"]."</td>
+              </tr>";
+                }
+                ?>
+                </tbody>
+            </table>
+
+
         </div>
     </div>
     <br/>
     <br/>
     <div class="section center">
-      <div class="row">
-          <div class="container">
-              <div class="col m12 l12 s12">
-              <button class="waves-effect waves-light btn purple" onclick="printDiv('printable');">Generate Report</button>
-              </div>
-          </div>
-      </div>
+        <div class="row">
+            <div class="container">
+                <div class="col m12 l12 s12">
+                    <button class="waves-effect waves-light btn purple" onclick="printDiv('printable');">Generate Report</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

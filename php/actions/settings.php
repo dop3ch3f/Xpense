@@ -1,7 +1,11 @@
 <?php
+require '../actions/src/Cloudinary.php';
+require '../actions/src/Uploader.php';
+error_reporting(E_ALL | E_STRICT);
+
 $servername = "localhost";
 $username = "id4885341_root";
-$password = "root";
+$password = "Primobeats1";
 $db = "id4885341_xpense_hub";
 
 $link = mysqli_connect($servername,$username,$password,$db);

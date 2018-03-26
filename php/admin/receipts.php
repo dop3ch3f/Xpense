@@ -5,8 +5,8 @@
   
   $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
   $q2="SELECT * FROM `admin_receipts`";
-  $result = mysqli($link,$q1);
-  $result1 = mysqli($link,$q2);
+  $result = mysqli_query($link,$q1);
+  $result1 = mysqli_query($link,$q2);
   $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -124,7 +124,7 @@
         <?php  
              while($row1 = mysqli_fetch_assoc($result1)){
                echo "<tr>
-               <td>".$row1['image_path']."</td>
+               <td><img class='materialboxed center-align' width='100' height='100' src='".$row1['image_path']."'/></td>
                <td>".$row1['full_name']."</td>
                <td>".$row1['name']."</td>
                <td>".$row1['price']."</td>

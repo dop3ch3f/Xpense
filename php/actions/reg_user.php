@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($r = mysqli_query($link, $q1)) {
                 $row1 = mysqli_fetch_assoc($r);
                 $_SESSION['user_id'] = $row1["user_id"];
+                $_SESSION['team_id'] = $row1["team_id"];
                 echo "Registered Succesfully. Redirecting to your Page";
                 header("refresh:3;url=http://localhost/Xpense/php/user/main.php");
 

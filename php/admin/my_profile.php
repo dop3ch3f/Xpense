@@ -5,8 +5,8 @@
   
   $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
   $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
-  $result = mysqli($link,$q1);
-  $result1 = mysqli($link,$q2);
+  $result = mysqli_query($link,$q1);
+  $result1 = mysqli_query($link,$q2);
   $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -109,7 +109,7 @@
           <div class="card hoverable center-align">
             <div class="card-stacked">
               <div class="card-header">
-                   
+                   <br/>
                    <img class="card-header-icon circle" src="<?php echo $row['image_path']; ?>" width="150px" height="150px"/>
               </div>
               <div class="card-content">
@@ -132,32 +132,36 @@
            <div class="card hoverable center-align">
              <div class="card-stacked">
                 <div class="card-content">
+                  <p>Repeat values you wish to keep</p>
                   <br/>
-                  <form method="POST" action="./update.php">
+                  <form method="POST" action="./update.php" enctype="multipart/form-data">
                     <div class="file-field input-field">
                       <div class="btn purple">
                          <span>Upload Logo</span>
-                         <input type="file"/>
+                         <input type="file" name="files[]" multiple accept="image/jpg, image/jpeg, image/png"/>
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text"/>
                       </div>
                     </div>
+                    <div class="input-field" style="display:none;">
+                      <input type="text" name="admin_id" value="<?php echo $row['admin_id']; ?>"/>
+                    </div>
                     <div class="input-field">
                       <label>New Username</label>
-                      <input type="text"/>
+                      <input type="text" name="full_name"/>
                     </div>
                     <div class="input-field">
                        <label>New Email</label>
-                       <input type="text">
+                       <input type="email" name="email">
                     </div>
                     <div class="input-field">
                       <label>New Password</label>
-                      <input type="text">
+                      <input type="password" name="password">
                     </div>
                     <div class="input-field">
                       <label>Confirm Password</label>
-                      <input type="text">
+                      <input type="password" name="cpassword">
                     </div>
                     <button type="submit" class="btn purple">Submit</button>
                   </form>

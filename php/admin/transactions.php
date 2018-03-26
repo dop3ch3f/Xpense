@@ -5,8 +5,8 @@ extract($_SESSION);
 
 $q1 = "SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
 $q2 = "SELECT * FROM `admin_transactions` WHERE `status` = 'Approved'";
-$result = mysqli($link, $q1);
-$result1 = mysqli($link, $q2);
+$result = mysqli_query($link, $q1);
+$result1 = mysqli_query($link, $q2);
 $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -63,10 +63,10 @@ $row = mysqli_fetch_assoc($result);
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="<?php echo row['image_path']; ?>" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6><?php echo row['full_name']; ?></h6>
-        <h6><?php echo row['email']; ?></h6>
+        <h6><?php echo $row['full_name']; ?></h6>
+        <h6><?php echo $row['email']; ?></h6>
       </div>
     </li>
     <br/>
@@ -105,16 +105,6 @@ $row = mysqli_fetch_assoc($result);
     <br/>
     <br/>
     <div class="section container" id="printable">
-    <div class="row">
-    <form class="col s12 l12 m12">
-        <div class="input-field col m10 s10 l10">
-          <input id="icon_prefix" type="text" class="">
-        </div>
-        <div class="input-field col m2 s2 l2">
-          <a class="waves-effect purple waves-light btn large"><i class="material-icons">search</i></a>
-        </div>
-    </form>
-  </div>
         <div class="row center">
             <div class="col s12 l12 m12 ">
 

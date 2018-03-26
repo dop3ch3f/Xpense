@@ -1,9 +1,24 @@
 <?php
-  session_start();
-  if($_SERVER["REQUEST_METHOD"]=="POST"){
+require "../actions/conn.php";
+session_start();
+extract($_SESSION);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
-    $query = "INSERT INTO `Expense`(`user_id`, `admin_id`, `price`, `description`, `status`, `receipt_status`, `date_created`, `date_approved`) VALUES ([value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])";
-  } 
+	$date = date("Y:m:d");
+    $query = "INSERT INTO `Expense`(`user_id`,`team_id`, `name`, `price`, `description`, `status`, `receipt_status`, `date_created`) VALUES ('$user_id','$team_id','$name','$price','$description','Pending','Absent','$date')";
+
+    if(mysqli_query($link,$query)){
+      $output = "<h6>Expense Registered successfully, Refreshing..</h6>";
+	    header("refresh:2;url=http://localhost/Xpense/php/user/expenses.php");
+    }else {
+      $output = "<h6>Something Went Wrong, Refreshing..</h6>";
+    }
+   
+}
+
+$q1 = "SELECT * FROM `user_team` WHERE `user_id` = '$user_id' LIMIT 1";
+$result = mysqli_query($link, $q1);
+$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,10 +71,11 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo $row['full_name']; ?></h6>
+        <h6><?php echo $row['email']; ?></h6>
+        <h6><?php echo $row['team_name'];?></h6>
       </div>
     </li>
     <br/>
@@ -89,80 +105,20 @@
   </ul>
     <br/>
     <br/>
-    <div class="section container  " id="printable">
-    <div class="row">
-    <form class="col s12 l12 m12">
-        <div class="input-field col m10 s10 l10">
-          <input id="icon_prefix" type="text" class="">
-        </div>
-        <div class="input-field col m2 s2 l2">
-          <a class="waves-effect purple waves-light btn large"><i class="material-icons">search</i></a>
-        </div>
-    </form>
-  </div>
+    <div class="section container" id="printable">
         <div class="row">
-            <div class="col s12 m12 l12">
-            <table class="responsive bordered highlight">
-        <thead>
-          <tr>
-              <th>ITEM NAME</th>
-              <th>ITEM PRICE</th>
-              <th>DATE REQUESTED</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Eclair</td>
-            <td>$0.87</td>
-            <td>May 5, 2000</td>
-            
-          </tr>
-          <tr>
-            
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td>May 5, 2000</td>
-            
-          </tr>
-          <tr>
-            
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td>May 5, 2000</td>
-            
-          </tr>
-        </tbody>
-      </table>
-            </div>
-        </div>
-    </div>
-    <br/>
-    <div class="section center">
-      <div class="row">
-          <div class="container">
-              <div class="col m12 l12 s12">
-              <button class="waves-effect waves-light btn purple modal-trigger" href="#modal1"><i class="material-icons">add</i></button>
-              </div>
-          </div>
-      </div>
-    </div>
-</body>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div class="row">
-    <form class="col s12" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-      <div class="row">
-        <h5>Create an Expense</h5>
-        <br/>
-        <div class="input-field col s12">
-          <input placeholder="Input item name " name="item_name" id="item_name" type="text">
-          <label for="item_name">Item Name</label>
+         <form class="col s12" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+           <div class="row">
+            <h5>Create an Expense</h5>
+            <br/>
+            <?php echo $output; ?>
+            <br/>
+            <div class="input-field col s12">
+          <input placeholder="Input item name " name="name" id="name" type="text">
+          <label for="name">Item Name</label>
         </div>
       </div>
-      <div class="row">  
+      <div class="row">
         <div class="input-field col s12">
           <input id="price" name="price" type="number" placeholder="Input price in naira">
           <label for="price">Price</label>
@@ -174,12 +130,14 @@
           <label for="description">Description</label>
         </div>
       </div>
+      <div class="row center-align">
+        <button class=" waves-effect purple btn btn-large" type="submit">Submit</button>
+      </div>
   </div>
     </div>
-    <div class="modal-footer">
-      <button class=" waves-effect purple btn btn-large">Submit</button>
-      <button class="modal-action modal-close waves-effect purple btn btn-large">Close</button>
-    </div>
+
     </form>
-  </div>
+        </div>
+    </div>
+</body>
 </html>

@@ -1,14 +1,15 @@
 <?php
-  include '../actions/conn.php';
+  require '../actions/conn.php';
   session_start();
   extract($_SESSION);
+ 
   
   $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
-  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
-  $result = mysqli($link,$q1);
-  $result1 = mysqli($link,$q2);
+  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `team_id`='$team_id'";
+  $result = mysqli_query($link,$q1);
+  $result1 = mysqli_query($link,$q2);
   $row = mysqli_fetch_assoc($result);
-  
+  mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,9 +131,9 @@
                <td>".$row1['description']."</td>
                <td>".$row1['date_created']."</td>
                <td><form method='POST' action='./expense_post.php'>
-               <button name='accept' value=".$row1['expense_id']."class='waves-effect waves-light btn purple'>Accept</button>
+               <button name='accept' value='".$row1['expense_id']."' class='waves-effect waves-light btn purple'>Accept</button>
                </form></td>
-               <td><form method='POST' action='./expense_post.php'><button name='reject' value=".$row1['expense_id']." class='waves-effect waves-light btn purple'>Reject</button></form></td></tr>
+               <td><form method='POST' action='./expense_post.php'><button name='reject' value='".$row1['expense_id']."' class='waves-effect waves-light btn purple'>Reject</button></form></td></tr>
                ";
              }
            ?>

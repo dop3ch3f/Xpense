@@ -1,5 +1,11 @@
 <?php
-  session_start(); 
+  require "../actions/conn.php";
+  session_start();
+  extract($_SESSION); 
+
+  $q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id'";
+  $result = mysqli_query($link,$q1);
+  $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,10 +60,11 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo $row['full_name']; ?></h6>
+        <h6><?php echo $row['email'];?></h6>
+        <h6><?php echo $row['team_name'];?></h6>
       </div>
     </li>
     <br/>
@@ -95,25 +102,25 @@
   </ul>
     <br/>
     <br/>
-    <div class="section container  " id="printable">
+    <div class="section container">
       <div class="row">
         <div class="col s12 m6 l6">
           <div class="card hoverable center-align">
             <div class="card-stacked">
               <div class="card-header">
                    
-                   <img class="card-header-icon circle" src="../../img/XPENSE LOGO.png" width="150px" height="150px"/>
-                   <h5 class="card-header-text">Atlas CC</h5>
+                   <img class="card-header-icon circle" src="<?php echo $row['image_path'];?>" width="150px" height="150px"/>
+                   <h5 class="card-header-text"><?php echo $row['team_name']; ?></h5>
               </div>
               <div class="card-content">
                 <div class="input-field">
                  <p>Username</p>
-                 <input value="John Doe" disabled />
+                 <input value="<?php echo $row['full_name']; ?>" disabled />
                 </div>
                  <br/>
                  <div class="input-field">
                  <p>Email</p>
-                 <input value="any@any.com" disabled />
+                 <input value="<?php echo $row['email']; ?>" disabled />
                  </div>
                  
                  <br/>
@@ -125,12 +132,13 @@
            <div class="card hoverable center-align">
              <div class="card-stacked">
                 <div class="card-content">
+                    <p>Repeat values you wish to keep</p>
                   <br/>
-                  <form method="POST" action="">
+                  <form method="POST" action="./update.php" enctype="multipart/form-data">
                     <div class="file-field input-field">
                       <div class="btn purple">
                          <span>Upload Logo</span>
-                         <input type="file"/>
+                         <input type="file" name="files[]" multiple accept="image/jpg, image/jpeg, image/png"/>
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text"/>
@@ -138,19 +146,22 @@
                     </div>
                     <div class="input-field">
                       <label>New Username</label>
-                      <input type="text"/>
+                      <input name="full_name"type="text"/>
                     </div>
                     <div class="input-field">
                        <label>New Email</label>
-                       <input type="text">
+                       <input name="password" type="email">
                     </div>
                     <div class="input-field">
                       <label>New Password</label>
-                      <input type="text">
+                      <input name="password" type="password">
+                    </div>
+                    <div class="input-field" style="display:none;">
+                      <input name="user_id" value="<?php echo $user_id; ?>"/>
                     </div>
                     <div class="input-field">
                       <label>Confirm Password</label>
-                      <input type="text">
+                      <input name="cpassword" type="password">
                     </div>
                     <button type="submit" class="btn purple">Submit</button>
                   </form>

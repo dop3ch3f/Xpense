@@ -1,32 +1,33 @@
 <?php
-include '../actions/conn.php';
+require './conn.php';
+ob_start();
 session_start();
-if($_SERVER["REQUEST_METHOD"]=="GET"){
+if($_SERVER["REQUEST_METHOD"] == "GET"){
   if($_GET['logout']==1){
     session_destroy();
-    $logout = "Logout Successful";
+    $logout = "<h4 class=\"is-size-4\">Logout Successful</h4>";
+    header("refresh:0;url=http://localhost/Xpense/php/actions/login.php");
   }
 }
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
   extract($_POST);
   if($type == "user"){
-     $query="SELECT * FROM `Users` WHERE `email`=$email AND `password`=$password ";
-     if(mysqli_query($link,$query)){
-       if($row->mysqli_fetch_assoc($link,$query)){
+     $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' LIMIT 1 ";
+     if($ures = mysqli_query($link,$query1)){
+         $row=mysqli_fetch_assoc($ures);
          $_SESSION['user_id'] = $row['user_id'];
-         header("../user/main.php");
-       }
+         $_SESSION['team_id'] = $row['team_id'];
+         header("Location:../user/main.php");
      }else{
        echo "Email/Password is incorrect";
      }
-  }
-  if($type == "admin"){
-     $query = "SELECT * FROM `Admin` WHERE `email`=$email AND `password`=$password ";
-     if(mysqli_query($link,$query)){
-      if($row->mysqli_fetch_assoc($link,$query)){
+  }else{
+     $query = "SELECT * FROM `Admin` WHERE `email`='$email' AND `password`='$password' LIMIT 1 ";
+     if($ares= mysqli_query($link,$query)){
+        $row=mysqli_fetch_assoc($ares);
         $_SESSION['admin_id'] = $row['admin_id'];
-        header("../admin/main.php");
-      }
+        $_SESSION['team_id'] = $row['team_id'];
+        header("Location:../admin/main.php");
      }else{
        echo "Email/Password is incorrect";
      }
@@ -47,14 +48,13 @@ mysqli_close($link);
   <link href='../../css/styles.css' rel="stylesheet" />
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   <script src='../../js/jquery-3.3.1.min.js'></script>
-  <script src='../../js/index.js'></script>
 </head>
 
 <body>
   <section class="hero is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <img src="../../img/XPENSE LOGO.png" style="height:100px !important;" class="is-rounded" width="160px" alt="Logo">
+          <h1 class="is-size-1" >XpenseHub</h1>
         <br/>
         <br/>
         <div class="field">
@@ -66,7 +66,7 @@ mysqli_close($link);
               <h2 class="is-size-4">Role:</h2>
             </label>
             <div class="control">
-              <select class="input is-medium" name="type" id="password">
+              <select class="input is-medium" name="type" id="type">
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
               </select>
@@ -74,10 +74,10 @@ mysqli_close($link);
           </div>
           <div class="field has-text-left">
             <label class="label">
-              <h2 class="is-size-4">Username:</h2>
+              <h2 class="is-size-4">Email:</h2>
             </label>
             <div class="control has-icons-left">
-              <input class="input is-medium" name="username" id="username" type="text">
+              <input class="input is-medium" name="email" id="email" type="email">
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -96,10 +96,11 @@ mysqli_close($link);
           </div>
           <br/>
           <br/>
-          <button class="button no-outline is-medium" id="">Sign In</button>
-          <a class="button no-outline is-medium is-right" href="../../index.php">Home Page</a>
+          <button class="button no-outline is-medium" type="submit">Log In</button>
+          <br/><br/>
+          <a  href="../../index.php">Back to Home</a>
           <br/>
-          <a href="../actions/reset.php">Forgot Password</a>
+         <!-- <a href="../actions/reset.php">Forgot Password</a> -->
         </form>
       </div>
     </div>

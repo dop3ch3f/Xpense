@@ -1,15 +1,13 @@
 <?php
-  include '../actions/conn.php';
+  require "../actions/conn.php"; 
   session_start();
-  extract($_SESSION);
+  extract($_SESSION); 
   
-  $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
-  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
-  $result = mysqli($link,$q1);
-  $result1 = mysqli($link,$q2);
+  $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id'";
+  $result = mysqli_query($link,$q1);
   $row = mysqli_fetch_assoc($result);
-   
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,6 +168,5 @@
     </div>
   </div>
 </body>
-<!-- Modal Structure -->
 
 </html>

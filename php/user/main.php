@@ -1,5 +1,11 @@
 <?php
-  session_start(); 
+  require "../actions/conn.php"; 
+  session_start();
+  extract($_SESSION); 
+  
+  $q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id'";
+  $result = mysqli_query($link,$q1);
+  $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +55,11 @@
       <div class=" center-align">
         <br/>
         <a>
-          <img class="circle" src="../../img/XPENSE LOGO.png" width="100px" height="100px">
+          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
         </a>
-        <h6>John Doe</h6>
-        <h6>jdandturk@gmail.com</h6>
+        <h6><?php echo $row['full_name']; ?></h6>
+        <h6><?php echo $row['email']; ?></h6>
+        <h6><?php echo $row['team_name'];?></h6>
       </div>
     </li>
     <br/>
