@@ -4,23 +4,24 @@ require '../actions/src/main.php';
 
 $date = date("Y:m:d");
 #insert into db when picture is available
-function insert_into_db($options = array(),$post_data = array()){
+function insert_into_db($options,$post_data){
     extract($options);
     extract($post_data);
-    print_r($post_data);
     print_r($options);
-     $query = "UPDATE `Admin` SET `full_name`='$full_name',`email`='$email',`password`='$password',`image_path`='$secure_url' WHERE `admin_id`='$admin_id' ";
+	require '../actions/conn.php';
+     $query = "UPDATE `Admin` SET `full_name`='$full_name',`email`='$email',`password`='$password',`image_path`='$url' WHERE `admin_id`='$admin_id' ";
      if(mysqli_query($link,$query)){
          echo "Your Details have been updated successfully, Redirecting..";
-	     header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
+	    header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
      }else{
          echo "Something Went Wrong, Try Again".mysqli_error($link);
 	     header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
      }
 }
 #insert into db when picture is unavailable
-function insert_into_db_plain($post_data = array()) {
+function insert_into_db_plain($post_data) {
     extract($post_data);
+    require '../actions/conn.php';
 	$query = "UPDATE `Admin` SET `full_name`='$full_name',`email`='$email',`password`='$password', WHERE `admin_id`='$admin_id' ";
 	if(mysqli_query($link,$query)){
 		echo "Your Details have been updated successfully, Redirecting..";

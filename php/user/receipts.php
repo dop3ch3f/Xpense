@@ -148,9 +148,7 @@
                     </div>
                 </div>
             </div>
-    </body>
-
-    <!-- Modal Structure -->
+            <!-- Modal Structure -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <form class="col s12" action="./receipt_upload.php" method="POST" enctype="multipart/form-data">
@@ -167,6 +165,25 @@
                         </div>
                     </div>
                 </div>
+                    <?php 
+                      $query2 = "SELECT * FROM `user_expenses` WHERE `user_id`='$user_id' AND `receipt_status`='Absent'";
+                      $res = mysqli_query($link,$query2);
+                      echo  "<div class='row'>
+                      <div class='input-field col s12'>
+                       <select name='expense_id' >";
+                      while($row2 = mysqli_fetch_assoc($res)){
+                        echo "<option value='".$row2['expense_id']."'>".$row2['name']." for ".$row2['price']." NGN</option>";
+                      } 
+                      echo "</select>
+                      <label>Target Expense</label>
+                    </div>
+                   </div>";
+                     ?>  
+                   <script>
+                       $(document).ready(function() {
+                           $('select').material_select();
+                        });
+                   </script>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea name="description" class="materialize-textarea"></textarea>
@@ -176,25 +193,16 @@
                 <div class="row" style="display:none;">
                     <input name="team_id" value="<?php echo $row['team_id']; ?>"/>
                 </div>
-                <div class="row">
-                <div class="input-field col s12">
-                    <label>Target Expense</label>
-                  <select name="expense_id">
-                    <?php 
-                      $query ="SELECT * FROM `user_expenses` WHERE `user_id`='$user_id' AND `receipt_status`='Absent'";
-                      $res = mysqli_query($link,$query);
-                      while($row2=mysqli_fetch_assoc($res)){
-                          echo "<option value='".$row2['expense_id']."'>".$row2['name']." for ".$row['price']."</option>";
-                      } 
-                     ?>  
-                   </select>
-                 
+                <div class="row" style="display:none;">
+                    <input name="user_id" value="<?php echo $row['user_id']; ?>"/>
                 </div>
-  </div>
-        </div>
+           </div>
         <div class="modal-footer">
-        <button class="waves-effect purple btn btn-large" type="submit">Submit</button>
-        <button href="#!" class="modal-action modal-close waves-effect purple btn btn-large">Close</button>
-       </form>        
+          <button class="waves-effect purple btn btn-large" type="submit">Submit</button>
+          </form>
+        </div>
     </div>
+    </body>
+
+    
     </html>

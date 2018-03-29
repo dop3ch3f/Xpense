@@ -3,13 +3,12 @@
   session_start();
   extract($_SESSION);
  
-  
   $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
   $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `team_id`='$team_id'";
   $result = mysqli_query($link,$q1);
   $result1 = mysqli_query($link,$q2);
   $row = mysqli_fetch_assoc($result);
-  mysqli_close($link);
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">

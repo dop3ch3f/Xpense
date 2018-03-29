@@ -108,7 +108,7 @@
           <div class="card hoverable center-align">
             <div class="card-stacked">
               <div class="card-header">
-                   
+                   <br/>
                    <img class="card-header-icon circle" src="<?php echo $row['image_path'];?>" width="150px" height="150px"/>
                    <h5 class="card-header-text"><?php echo $row['team_name']; ?></h5>
               </div>
@@ -150,7 +150,7 @@
                     </div>
                     <div class="input-field">
                        <label>New Email</label>
-                       <input name="password" type="email">
+                       <input name="email" type="email">
                     </div>
                     <div class="input-field">
                       <label>New Password</label>

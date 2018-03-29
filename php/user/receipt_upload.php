@@ -2,19 +2,21 @@
 	require '../actions/conn.php';
 	require '../actions/src/main.php';
 	
-	$date = date("Y:m:d");
+	
 	#insert into db when picture is available
 	function insert_into_db($options = array(),$post_data = array()){
 		extract($options);
 		extract($post_data);
-		$query .= "UPDATE `Expense` SET `receipt_status`='Available',`date_approved`='$date' WHERE `expense_id`='$expense_id';";
+		require '../actions/conn.php';
+		$date = date("Y:m:d");
+		$query = "UPDATE `Expense` SET `receipt_status`='Available',`date_approved`='$date' WHERE `expense_id`='$expense_id';";
 		$query .= "INSERT INTO `Receipts`(`user_id`, `expense_id`, `team_id`, `image_path`, `date_posted`) VALUES ('$user_id','$expense_id','$team_id','$url','$date');";
 		if(mysqli_multi_query($link,$query)){
 			echo "Receipt Upload successful, Redirecting..";
-			header("refresh:2;url=http://localhost/Xpense/php/user/my_profile.php");
+			header("refresh:2;url=http://localhost/Xpense/php/user/receipts.php");
 		}else{
 			echo "Something Went Wrong, Try Again";
-			header("refresh:2;url=http://localhost/Xpense/php/user/my_profile.php");
+			header("refresh:2;url=http://localhost/Xpense/php/user/receipts.php");
 		}
 	}
 	
@@ -40,7 +42,7 @@
 			if($value != ""){
 				create_photo($value);
 			}else{
-				insert_into_db_plain($_POST);
+				echo "Please Attach an Image and Try Again";
 			}
 		}
 	}

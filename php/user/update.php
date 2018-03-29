@@ -7,6 +7,7 @@
 	function insert_into_db($options = array(),$post_data = array()){
 		extract($options);
 		extract($post_data);
+		require '../actions/conn.php';
 		$query = "UPDATE `Users` SET `full_name`='$full_name',`email`='$email',`password`='$password',`image_path`='$url' WHERE `user_id`='$user_id' ";
 		if(mysqli_query($link,$query)){
 			echo "Your Details have been updated successfully, Redirecting..";
@@ -19,6 +20,7 @@
 	#insert into db when picture is unavailable
 	function insert_into_db_plain($post_data = array()) {
 		extract($post_data);
+		require '../actions/conn.php';
 		$query = "UPDATE `Users` SET `full_name`='$full_name',`email`='$email',`password`='$password' WHERE `user_id`='$user_id' ";
 		if(mysqli_query($link,$query)){
 			echo "Your Details have been updated successfully, Redirecting..";

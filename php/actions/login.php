@@ -12,8 +12,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   extract($_POST);
   if($type == "user"){
-     $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' LIMIT 1 ";
-     if($ures = mysqli_query($link,$query1)){
+     $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password'";
+     $ures=mysqli_query($link,$query1);
+     if(mysqli_num_rows($ures)>0){  
          $row=mysqli_fetch_assoc($ures);
          $_SESSION['user_id'] = $row['user_id'];
          $_SESSION['team_id'] = $row['team_id'];
@@ -22,8 +23,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        echo "Email/Password is incorrect";
      }
   }else{
-     $query = "SELECT * FROM `Admin` WHERE `email`='$email' AND `password`='$password' LIMIT 1 ";
-     if($ares= mysqli_query($link,$query)){
+     $query = "SELECT * FROM `Admin` WHERE `email`='$email' AND `password`='$password'";
+     $ares= mysqli_query($link,$query);
+     if(mysqli_num_rows($ares)>0){
         $row=mysqli_fetch_assoc($ares);
         $_SESSION['admin_id'] = $row['admin_id'];
         $_SESSION['team_id'] = $row['team_id'];
