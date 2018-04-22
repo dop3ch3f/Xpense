@@ -1,6 +1,7 @@
 <?php
-require '../actions/conn.php';
+require './conn.php';
 session_start();
+ob_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     extract($_GET);
     $query = "SELECT * FROM `Admin` WHERE `admin_id`='$admin'";
@@ -20,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		extract($_POST);
-		$issue = "There are issues with your form:<br/>";
 		if($email == ""){
 			$issue.= "Input an Email Address.<br/>";
 		}
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		}
 		
 		if($issue){
-			$output = ' <div class="notification is-danger" ' .$issue. ' </div>';
+			$output = ' <div class="notification is-danger">There are issues with your form:<br/> ' .$issue. ' </div>';
 		}else{
 			$user_id = mt_rand(0,1000).$full_name.mt_rand(0,1000);
 			$q = "INSERT INTO `Users`(`user_id`,`team_id`, `full_name`, `email`, `password`) VALUES ('$user_id','$team_id','$full_name','$email','$password')";
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					$_SESSION['user_id'] = $row1["user_id"];
 					$_SESSION['team_id'] = $row1["team_id"];
 					echo "Registered Succesfully. Redirecting to your Page";
-					header("refresh:3;url=http://localhost/Xpense/php/user/main.php");
+					header("refresh:2;url=http://xpensehub.000webhostapp.com/php/user/main.php");
 					
 				} else {
 					$output =  "Error....";

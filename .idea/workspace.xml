@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efa89f0b-077e-471d-ad34-138a55459bce" name="Default" comment="" />
+    <list default="true" id="efa89f0b-077e-471d-ad34-138a55459bce" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Light.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Light.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Medium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Medium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Thin.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/roboto/Roboto-Thin.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/register_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/register_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/registerteam.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/registerteam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/reset.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/actions/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/settings.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +42,71 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/actions/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register_user.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/actions/register_user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="51" column="76" selection-start-line="51" selection-start-column="76" selection-end-line="51" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registerteam.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/admin/main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/actions/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8" column="33" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conn.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/actions/conn.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/actions/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,12 +136,13 @@
         <option value="$PROJECT_DIR$/php/actions/conn.php" />
         <option value="$PROJECT_DIR$/php/actions/register copy.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/php/actions/register.php" />
         <option value="$PROJECT_DIR$/php/admin/manage_teams.php" />
         <option value="$PROJECT_DIR$/php/admin/mt_add_member.php" />
+        <option value="$PROJECT_DIR$/php/actions/reg_user.php" />
+        <option value="$PROJECT_DIR$/php/actions/settings.php" />
+        <option value="$PROJECT_DIR$/php/actions/register.php" />
         <option value="$PROJECT_DIR$/php/actions/registerteam.php" />
         <option value="$PROJECT_DIR$/php/actions/login.php" />
-        <option value="$PROJECT_DIR$/php/actions/reg_user.php" />
         <option value="$PROJECT_DIR$/php/actions/register_user.php" />
       </list>
     </option>
@@ -128,26 +211,28 @@
       <workItem from="1522067311733" duration="449000" />
       <workItem from="1522309215684" duration="93000" />
       <workItem from="1524169908742" duration="31123000" />
-      <workItem from="1524336830920" duration="2817000" />
+      <workItem from="1524336830920" duration="8102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57337000" />
+    <option name="totallyTimeSpent" value="62622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" x="515" y="25" width="249" height="750" id="Project" order="1" weight="0.15105008" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info anchor="right" id="Database" order="0" weight="0.3296875" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="1" weight="0.32965517" />
       <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.32965517" />
+      <window_info content_ui="combo" x="515" y="25" width="249" height="750" id="Project" order="1" weight="0.15105008" />
+      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="0" weight="0.3296875" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32965517" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.32965517" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -156,7 +241,6 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,20 +255,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/admin/manage_teams.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4494">
@@ -380,13 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/src/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/admin/update.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -418,13 +481,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/uikit.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12616" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/conn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        <state relative-caret-position="-12616">
+          <folding>
+            <element signature="e#4768#5112#2" expanded="true" />
+            <element signature="e#6411#6696#2" expanded="true" />
+            <element signature="e#15086#15474#2" expanded="true" />
+            <element signature="e#15661#16049#2" expanded="true" />
+            <element signature="e#16748#17037#2" expanded="true" />
+            <element signature="e#17076#17397#2" expanded="true" />
+            <element signature="e#17442#17751#2" expanded="true" />
+            <element signature="e#17883#18172#2" expanded="true" />
+            <element signature="e#18220#18541#2" expanded="true" />
+            <element signature="e#18595#18904#2" expanded="true" />
+            <element signature="e#38430#38768#2" expanded="true" />
+            <element signature="e#38890#39227#2" expanded="true" />
+            <element signature="e#49486#49914#2" expanded="true" />
+            <element signature="e#50024#50333#2" expanded="true" />
+            <element signature="e#113920#114289#2" expanded="true" />
+            <element signature="e#119497#119810#2" expanded="true" />
+            <element signature="e#140981#141425#2" expanded="true" />
+            <element signature="e#148274#148563#2" expanded="true" />
+            <element signature="e#149190#149511#2" expanded="true" />
+            <element signature="e#150204#150513#2" expanded="true" />
+            <element signature="e#186285#186651#2" expanded="true" />
+            <element signature="e#187575#187940#2" expanded="true" />
+            <element signature="e#243881#244365#2" expanded="true" />
+            <element signature="e#245157#245494#2" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -471,35 +554,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/login.php">
+    <entry file="file://$PROJECT_DIR$/php/actions/conn.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        <state relative-caret-position="63">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/register_user.php">
+    <entry file="file://$PROJECT_DIR$/php/actions/reset.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/actions/src/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="114" column="53" lean-forward="true" selection-start-line="114" selection-start-column="53" selection-end-line="114" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#1;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="147">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+    <entry file="file://$PROJECT_DIR$/php/actions/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state relative-caret-position="168">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/actions/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1025">
-          <caret line="59" column="16" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        <state relative-caret-position="63">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/admin/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/actions/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/actions/register_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="51" column="76" selection-start-line="51" selection-start-column="76" selection-end-line="51" selection-end-column="76" />
         </state>
       </provider>
     </entry>

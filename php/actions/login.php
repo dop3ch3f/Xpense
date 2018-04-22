@@ -1,6 +1,7 @@
 <?php
 require './conn.php';
 session_start();
+ob_start();
 if($_SERVER["REQUEST_METHOD"] == "GET"){
   if($_GET['logout']==1){
     session_destroy();

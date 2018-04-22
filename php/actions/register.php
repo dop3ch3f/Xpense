@@ -2,7 +2,6 @@
     session_start();
    if($_SERVER["REQUEST_METHOD"] == "POST"){
        extract($_POST);
-       $issue = "There are issues with your form:<br/>";
        if($email == ""){
            $issue.= "Input an Email Address.<br/>";
        }
@@ -20,7 +19,7 @@
        }
        
        if($issue){
-            $output = ' <div class="notification is-danger" ' .$issue. ' </div>';
+            $output = ' <div class="notification is-danger">There are issues with your form:<br/> ' .$issue. ' </div>';
        }else{
              $_SESSION["email"] = $email;
              $_SESSION["full_name"] = $full_name;

@@ -1,12 +1,13 @@
 <?php
+    ob_start();
+    require "./conn.php";
     session_start();
-    /*if(!$_SESSION["email"] AND !$_SESSION["password"]){
+    if(!$_SESSION["email"] AND !$_SESSION["password"]){
 	    header("Location:./register.php");
-    }*/
-	
+    }
 	function mailUser($id, $t, $m = array())
 	{
-				$to = implode(",",$m);
+				$to = implode(', ',$m);
 				$endpoint = "http://xpensehub.000webhostapp.com/php/actions/register_user.php?admin=".$id;
 				$subject = "Registration For Xpense Hub";
 				$message = "
@@ -21,26 +22,28 @@
              ";
 				$headers[] = 'MIME-Version: 1.0';
 				$headers[] = 'Content-type: text/html; charset=iso-8859-1';
-				$headers[] = "To: '$to'  ";
+				$headers[] = "To: ".$to;
 				$headers[] = 'From: Xpense Hub';
-				mail($to, $subject, $message,implode("\r\n", $headers));
-				header("Location:../admin/main.php");
+				if(mail($to, $subject, $message,implode("\r\n", $headers))){
+					header("Location:../admin/main.php");
+                }
+				
 	}
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		extract($_POST);
-		
+		extract($_SESSION);
 		#generate date
 		$date = date("Y:m:d");
 		#generate team and admin id
 		$admin_id = mt_rand(0,1000).$full_name.mt_rand(0,1000);
-		$team_id = mt_rand(0,1000).$team.mt_rand(0,1000);
+		$team_id = mt_rand(0,1000).$team_name.mt_rand(0,1000);
 		#queries
-		$qq = "INSERT INTO `Teams`(`team_id`,`admin_id`,`team_name`, `date_created`) VALUES ('$team_id','$admin_id','$team','$date')";
+		$qq = "INSERT INTO `Teams`(`team_id`,`admin_id`,`team_name`, `date_created`) VALUES ('$team_id','$admin_id','$team_name','$date')";
 		
 		$q3 = "INSERT INTO `Admin`(`admin_id`, `full_name`, `email`, `password`, `date_created`) VALUES ('$admin_id','$full_name','$email','$password','$date')";
-		if(mysqli_query($link,$qq)){
-			if (mysqli_query($link,$q3)) {
+		if(mysqli_query($link,$q3)){
+			if (mysqli_query($link,$qq)) {
 					$_SESSION['admin_id'] = $admin_id;
 					$_SESSION['team_id'] = $team_id;
 					mailUser($admin_id, $team_name, $mail);
