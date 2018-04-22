@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$db = "Xpense_hub";
+$db = "id4885341_xpense_hub";
 
 $link = mysqli_connect($servername,$username,$password,$db);
 

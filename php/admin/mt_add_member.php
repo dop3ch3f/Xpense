@@ -2,52 +2,41 @@
 include "../actions/conn.php";
 ob_start();
 session_start();
+	function mailUser($id, $t, $m = array())
+	{
+				$to = implode(",", $m);
+				$endpoint = "http://xpensehub.000webhostapp.com/php/actions/register_user.php?admin=".$id;
+				$subject = "Registration For Xpense Hub";
+				$message = "
+             <html>
+               <head>
+                 <title>Xpense Hub Registration</title>
+               </head>
+             <body>
+               <h2>Please Join Your Registered Team ".$t." with Xpense Hub</h2><a href='".$endpoint."'><h3>Click here to Register</h3></a>
+             </body>
+             </html>
+             ";
+				$headers[] = 'MIME-Version: 1.0';
+				$headers[] = 'Content-type: text/html; charset=iso-8859-1';
+				$headers[] = "To: '$to'  ";
+				$headers[] = 'From: Xpense Hub';
+				mail($to, $subject, $message,implode("\r\n", $headers));
+				header("Location: http://xpensehub.000webhostapp.com/php/admin/main.php");
+	}
+	
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     extract($_POST);
     #generate date
 	$date = date("Y:m:d");
     #generate team id
-    $team_id = "" .mt_rand().$team_name.mt_rand();
+	$team_id = mt_rand(0,1000).$team.mt_rand(0,1000);
     #queries
-    $qq = "INSERT INTO `Teams`( `team_id`,`team_name`, `date_created`) VALUES ('$team_id','$team_name','$date')";
-    #logging process
+    $qq = "INSERT INTO `Teams`( `team_id`,`admin_id`,`team_name`, `date_created`) VALUES ('$team_id','$admin_id','$team_name','$date')";
+   
     if (mysqli_query($link, $qq)) {
-        $q1 = "SELECT * FROM `admin_team` WHERE `admin_id`='$admin_id'";
-        if ($result1 = mysqli_query($link, $q1)) {
-            echo "Admin registered successfully";
-            while ($row = mysqli_fetch_assoc($result1)) {
-                $q2 = "INSERT INTO `Admin`(`team_id`, `full_name`, `email`, `password`, `date_created`) VALUES ('$team_id','".$row['full_name']."','".$row['email']."','".$row['password']."','$date')";
-                if(mysqli_query($link,$q2)){
-                    mailUser($admin_id, $row['full_name'], $team_name, $f_email, $s_email, $t_email);
-                    $_SESSION['admin_id'] = $admin_id;
-                    $_SESSION['team_id'] = $team_id;
-                    header("../admin/main.php");
-                }  
-            }
-            
-        }
-
-    }
-}
-
-function mailUser($id, $a, $t, $r1, $r2, $r3)
-{
-    $endpoint = "http://xpensehub.000webhostapp.com/php/actions/register_user.php?admin="+$id;
-    $subject = "Registration For XpenseHUB";
-    $message = "Please join your registered team: "+$t+" created by "+$a+"  on XpenseHub<a href='"+$endpoint+"'>Click here to register</a>";
-    $receivers = array("$r1", "$r2", "$r3");
-    foreach ($receivers as $recepient) {
-        echo $recepient;
-        if ($recepient != "") {
-            echo "not empty";
-            $to = $recepient;
-            mail($to, $subject, $message);
-            if (mail($to, $subject, $message)) {
-                echo "Mail Delivered Successfully to "+$recepient;
-            } else {
-                echo "Error Sending to "+$recepient;
-            }
-        }
+    	mailUser($admin_id, $team_name, $mail);
+        echo "Team Registered Successfully";
     }
 }
 mysqli_close($link);

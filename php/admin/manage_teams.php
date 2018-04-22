@@ -194,7 +194,7 @@
 <div id="modal2" class="modal">
     <div class="modal-content">
         <div class="center-align">
-            <h5>Add Teams</h5>
+            <h5>Add Team</h5>
 
         </div>
         <div class="row">
@@ -212,19 +212,19 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="f_email" id="t1" type="email" placeholder="First Member Email"/>
+                        <input name="mail[]" id="t1" type="email" placeholder="First Member Email"/>
                         <label for="t1">1st Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="s_email" id="t2" type="email" placeholder="Second Member Email"/>
+                        <input name="mail[]" id="t2" type="email" placeholder="Second Member Email"/>
                         <label for="t2">2nd Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="t_email" id="t3" type="email" placeholder="Third Member Email"/>
+                        <input name="mail[]" id="t3" type="email" placeholder="Third Member Email"/>
                         <label for="t3">3rd Email</label>
                     </div>
                 </div>
