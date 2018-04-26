@@ -6,7 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
   if($_GET['logout']==1){
     session_destroy();
     $logout = "<h4 class=\"is-size-4\">Logout Successful</h4>";
-   header("refresh:3;url=http://xpensehub.000webhostapp.com/php/actions/login.php");
+   header("refresh:3;url=http://localhost/Xpense/php/actions/login.php");
   }
 }
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $logout= "Please Input Email and Password to Login";
   }else{
 	  if($type == "user"){
-		  $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password'";
+		  $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' LIMIT 1";
 		  $ures=mysqli_query($link,$query1);
 		  if(mysqli_num_rows($ures)>0){
 			  $row=mysqli_fetch_assoc($ures);
@@ -26,12 +26,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			  $logout = "Email/Password is incorrect";
 		  }
 	  }else{
-		  $query = "SELECT * FROM `Admin` WHERE `email`='$email' AND `password`='$password'";
+		  $query = "SELECT * FROM `Admin` WHERE `email`='$email' AND `password`='$password' LIMIT 1";
 		  $ares= mysqli_query($link,$query);
 		  if(mysqli_num_rows($ares)>0){
 			  $row=mysqli_fetch_assoc($ares);
 			  $_SESSION['admin_id'] = $row['admin_id'];
-			  $_SESSION['team_id'] = $row['team_id'];
 			  header("Location:../admin/main.php");
 		  }else{
 			  $logout = "Email/Password is incorrect";
