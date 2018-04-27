@@ -1,5 +1,6 @@
 <?php
  require '../actions/conn.php';
+ require '../actions/server.php';
  session_start();
  $date = date("Y:m:d");
  if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -8,7 +9,7 @@
        $query = "UPDATE `Expense` SET `status`='Approved',`date_approved`='$date' WHERE `expense_id`='$accept'";
        if(mysqli_query($link,$query)){
            echo "Approved Successfully, Redirecting...";
-	       header("refresh:2;url=http://localhost/Xpense/php/admin/expenses.php");
+	       header("refresh:2;url=".$server."php/admin/expenses.php");
        }else{
            echo 'Somethings Wrong';
        }
@@ -17,7 +18,7 @@
         $query = "UPDATE `Expense` SET `status`='Rejected',`date_approved`='$date' WHERE `expense_id`='$reject'";
         if(mysqli_query($link,$query)){
         	    echo "Declined Successfully, Redirecting..";
-	        header("refresh:2;url=http://localhost/Xpense/php/admin/expenses.php");
+	        header("refresh:2;url=".$server."php/admin/expenses.php");
         }else{
             echo 'There was an Error';
         }

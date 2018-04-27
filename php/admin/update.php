@@ -1,6 +1,7 @@
 <?php
 require '../actions/conn.php';
 require '../actions/src/main.php';
+require '../actions/server.php';
 
 $date = date("Y:m:d");
 #insert into db when picture is available
@@ -12,10 +13,10 @@ function insert_into_db($options,$post_data){
      $query = "UPDATE `Admin` SET `full_name`='$full_name',`email`='$email',`password`='$password',`image_path`='$url' WHERE `admin_id`='$admin_id' ";
      if(mysqli_query($link,$query)){
          echo "Your Details have been updated successfully, Redirecting..";
-	    header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
+	    header("refresh:2;url=".$server."php/admin/my_profile.php");
      }else{
          echo "Something Went Wrong, Try Again".mysqli_error($link);
-	     header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
+	     header("refresh:2;url=".$server."php/admin/my_profile.php");
      }
 }
 #insert into db when picture is unavailable
@@ -25,10 +26,10 @@ function insert_into_db_plain($post_data) {
 	$query = "UPDATE `Admin` SET `full_name`='$full_name',`email`='$email',`password`='$password', WHERE `admin_id`='$admin_id' ";
 	if(mysqli_query($link,$query)){
 		echo "Your Details have been updated successfully, Redirecting..";
-		header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
+		header("refresh:2;url=".$server."php/admin/my_profile.php");
 	}else{
 		echo "Something Went Wrong, Try Again";
-		header("refresh:2;url=http://localhost/Xpense/php/admin/my_profile.php");
+		header("refresh:2;url=".$server."php/admin/my_profile.php");
 	}
 }
 #upload to cloudinary

@@ -1,5 +1,6 @@
 <?php
 require './conn.php';
+require './server.php';
 session_start();
 ob_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -15,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 $team_name = $row1['team_name'];
             }
         }
-    }else {
-        echo mysqli_error($link);
     }
 }
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -49,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 					$_SESSION['user_id'] = $row1["user_id"];
 					$_SESSION['team_id'] = $row1["team_id"];
 					echo "Registered Succesfully. Redirecting to your Page";
-					header("refresh:2;url=http://xpensehub.000webhostapp.com/php/user/main.php");
+					header("refresh:2;url=".$server."php/user/main.php");
 					
 				} else {
 					$output =  "Error....";

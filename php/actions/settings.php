@@ -10,12 +10,6 @@
 	
 	$link = mysqli_connect($servername,$username,$password,$db);
 	
-	$host_address="http://localhost/";
-	
-	$root_folder="xpensehub/";
-	
-	$mailendpoint="php/actions/register?admin=";
-	
 	\Cloudinary::config(array(
 		"cloud_name" => "dop3ch3f",
 		"api_key" => "373565986151316",

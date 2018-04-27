@@ -1,6 +1,7 @@
 <?php
     ob_start();
     require "./conn.php";
+    require './server.php';
     session_start();
     if(!$_SESSION["email"] AND !$_SESSION["password"]){
 	    header("Location:./register.php");
@@ -8,7 +9,7 @@
 	function mailUser($id, $t, $m = array())
 	{
 				$to = implode(', ',$m);
-				$endpoint = "http://xpensehub.000webhostapp.com/php/actions/register_user.php?admin=".$id;
+				$endpoint = $server."php/actions/register_user.php?admin=".$id;
 				$subject = "Registration For Xpense Hub";
 				$message = "
              <html>

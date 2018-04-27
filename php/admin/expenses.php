@@ -229,7 +229,7 @@
 
             </div>
             <div id="declined" class="col s12">
-                <form class="dateform col s12" action="expense_report.php" method="post">
+                <form class="dateform col s12" action="./expense_report.php" method="post">
                     <div class="row">
                         <div class="input-field col s4 inline">
                             <i class="far fa-calendar-alt prefix"></i>
@@ -258,7 +258,7 @@
                 </ul>
             </div>
             <div id="complete" class="col s12">
-                <form class="dateform col s12" action="expense_report.php" method="post">
+                <form class="dateform col s12" action="./expense_report.php" method="post">
                     <div class="row">
                         <div class="input-field col s4 inline">
                             <i class="far fa-calendar-alt prefix"></i>

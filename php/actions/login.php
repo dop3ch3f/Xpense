@@ -1,12 +1,13 @@
 <?php
 require './conn.php';
+require './server.php';
 session_start();
 ob_start();
 if($_SERVER["REQUEST_METHOD"] == "GET"){
   if($_GET['logout']==1){
     session_destroy();
     $logout = "<h4 class=\"is-size-4\">Logout Successful</h4>";
-   header("refresh:3;url=http://localhost/Xpense/php/actions/login.php");
+   header("refresh:3;url=".$server."php/actions/login.php");
   }
 }
 if($_SERVER["REQUEST_METHOD"] == "POST"){

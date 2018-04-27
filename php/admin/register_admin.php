@@ -1,5 +1,6 @@
 <?php
 require "../actions/conn.php";
+require "../actions/server.php";
 //ob_start() ensures the allowance of headers
 ob_start(); 
 session_start();
@@ -9,7 +10,7 @@ function mailUser($id, $a, $t, $r1, $r2, $r3)
     foreach ($receivers as $recepient) {
         if ($recepient != "") {
             $to = $recepient;
-            $endpoint = "http://xpensehub.000webhostapp.com/php/actions/register_user.php?admin=".$id;
+            $endpoint = $server."php/actions/register_user.php?admin=".$id;
             $subject = "Registration For XpenseHUB";
             $message = "
              <html>
@@ -26,7 +27,7 @@ function mailUser($id, $a, $t, $r1, $r2, $r3)
             $headers[] = "To: '$to'  ";
             $headers[] = 'From: XpenseHUB';
             mail($to, $subject, $message,implode("\r\n", $headers));
-            header("Location: http://xpensehub.000webhostapp.com/php/admin/main.php");
+            header("Location: ".$server."php/admin/main.php");
         }
     }
 }
@@ -58,14 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     print_r($_SESSION);
                     mailUser($admin_id,$full_name, $team_name, $r1, $r2, $r3);           
             }else{
-                echo "something is wrong can't upload";
+                echo "Something is wrong, Try Again";
             }
     
         }else{
-            echo mysqli_error($link);
+            echo "Something's Wrong";
         }
     }else{
-        echo "wahala dey";
+        echo "Please Try Again Later";
     }
     
 }
