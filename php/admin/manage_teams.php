@@ -25,6 +25,35 @@
     <script src='../../js/jquery-3.3.1.min.js'></script>
     <script src='../../js/materialize.min.js'></script>
     <script>
+        function genericAjax(x) {
+            var postData = $(x).serializeArray();
+            var formURL = $(x).attr("action");
+            $.ajax({
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function (data, textStatus, jqXHR) {
+                    $(x+'_button').hide();
+                    $(x+'_response').html(data);
+                    $(x+'_response').focus();
+                },
+                error: function (jqXHR, status, error) {
+                    alert('Error please try again');
+                    console.log(status + ": " + error);
+                }
+            });
+        }
+        function  submitCall(div_id) {
+            var x = div_id;
+            if (confirm("Click Cancel to Confirm Values Before Submitting and Click Ok to Submit !!") === true) {
+                var form_id = "#" + x + "_form";
+                genericAjax(form_id);
+            }
+        }
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
         function validate(x){
             
             for(var i=1;i<4;i++){
@@ -47,37 +76,6 @@
             }else{
                 submitCall(""+x);
             }
-        }
-        function validateEmail(email) {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-        
-        function  submitCall(div_id) {
-            var x = div_id;
-            if (confirm("Click Cancel to Confirm Values Before Submitting and Click Ok to Submit !!") === true) {
-                var form_id = "#" + x + "_form";
-                genericAjax(form_id);
-            }
-        }
-
-        function genericAjax(x) {
-            var postData = $(x).serializeArray();
-            var formURL = $(x).attr("action");
-            $.ajax({
-                url: formURL,
-                type: "POST",
-                data: postData,
-                success: function (data, textStatus, jqXHR) {
-                    $(x+'_button').hide();
-                    $(x+'_response').html(data);
-                    $(x+'_response').focus();
-                },
-                error: function (jqXHR, status, error) {
-                    alert('Error please try again');
-                    console.log(status + ": " + error);
-                }
-            });
         }
     </script>
     <script>
@@ -279,8 +277,7 @@
                             <input name="mail[]" id="t3" type="email" placeholder="any@any.com"/>
                             <label for="t3">3rd Member Email</label>
                         </div>
-                    <button class="btn purple center" type="button" onclick="validate('add')">Register</button>
-                    <div id="add_form_response" style="color: #2c3e50 !important;"></div>
+                    <button class="btn purple center" id="add_form_button" type="button" onclick="validate('add')">Register</button>
                 </form>
             </div>
         </div>

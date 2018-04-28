@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efa89f0b-077e-471d-ad34-138a55459bce" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/php/actions/server.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/actions/conn.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/conn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/actions/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/actions/register_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/register_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/actions/registerteam.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/registerteam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/actions/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/actions/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/admin/expense_post.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/expense_post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/admin/expenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/expenses.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/admin/manage_teams.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/manage_teams.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/admin/receipt_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/receipt_action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/admin/register_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/register_admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/admin/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/admin/my_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/admin/my_profile.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,59 +31,51 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="expenses.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/admin/expenses.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
+            <state relative-caret-position="21">
               <caret line="260" column="57" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
               <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-                <element signature="n#ul#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#li#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mt_add_member.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/admin/mt_add_member.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage_teams.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage_teams.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/admin/manage_teams.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="177" column="37" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
+            <state relative-caret-position="406">
+              <caret line="279" column="132" selection-start-line="279" selection-start-column="132" selection-end-line="279" selection-end-column="132" />
               <folding>
-                <element signature="e#950#1532#0#HTML" expanded="true" />
+                <element signature="n#script#4;n#head#0;n#html#0;n#!!top" />
+                <element signature="e#2970#3666#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h6#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registerteam.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+      <file leaf-file-name="my_profile.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/admin/my_profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1367">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/actions/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            <state relative-caret-position="-1611">
+              <caret line="117" column="52" selection-start-line="117" selection-start-column="52" selection-end-line="117" selection-end-column="52" />
+              <folding>
+                <element signature="n#script#3;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="e#2255#2479#0#HTML" expanded="true" />
+                <element signature="e#2512#3152#0#HTML" expanded="true" />
+                <element signature="e#2784#2941#0#HTML" expanded="true" />
+                <element signature="e#2998#3126#0#HTML" expanded="true" />
+                <element signature="e#3271#3525#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,7 +96,6 @@
         <option value="$PROJECT_DIR$/php/admin/transactions.php" />
         <option value="$PROJECT_DIR$/php/admin/all_transaction.php" />
         <option value="$PROJECT_DIR$/php/admin/mt_delete_user.php" />
-        <option value="$PROJECT_DIR$/php/admin/my_profile.php" />
         <option value="$PROJECT_DIR$/php/admin/mt_change_name.php" />
         <option value="$PROJECT_DIR$/php/user/update.php" />
         <option value="$PROJECT_DIR$/php/user/receipt_upload.php" />
@@ -144,6 +125,7 @@
         <option value="$PROJECT_DIR$/php/admin/register_admin.php" />
         <option value="$PROJECT_DIR$/php/admin/update.php" />
         <option value="$PROJECT_DIR$/php/admin/manage_teams.php" />
+        <option value="$PROJECT_DIR$/php/admin/my_profile.php" />
       </list>
     </option>
   </component>
@@ -153,7 +135,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1280" />
     <option name="height" value="800" />
   </component>
@@ -216,11 +198,13 @@
       <workItem from="1524494514871" duration="2406000" />
       <workItem from="1524508101060" duration="41320000" />
       <workItem from="1524852794274" duration="11490000" />
+      <workItem from="1524901424130" duration="1396000" />
+      <workItem from="1524931744285" duration="4517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118007000" />
+    <option name="totallyTimeSpent" value="123920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -260,6 +244,21 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/php/admin/manage_teams.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2331">
+          <caret line="177" column="37" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
+          <folding>
+            <element signature="n#script#4;n#head#0;n#html#0;n#!!top" />
+            <element signature="e#2970#3666#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h6#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/actions/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -343,13 +342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="10" column="126" lean-forward="true" selection-start-line="10" selection-start-column="126" selection-end-line="10" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/admin/my_profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="147" column="55" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -489,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/admin/update.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/admin/register_admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -510,8 +495,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/settings.php">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/js/ajaxhelper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/actions/register.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -520,31 +516,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/actions/registerteam.php">
+    <entry file="file://$PROJECT_DIR$/php/admin/manage_teams.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1367">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/ajaxhelper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+        <state relative-caret-position="406">
+          <caret line="279" column="132" selection-start-line="279" selection-start-column="132" selection-end-line="279" selection-end-column="132" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/admin/expenses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="260" column="57" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
-          <folding>
+            <element signature="n#script#4;n#head#0;n#html#0;n#!!top" />
+            <element signature="e#2970#3666#0#HTML" expanded="true" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="n#ul#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h6#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,15 +538,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/admin/manage_teams.php">
+    <entry file="file://$PROJECT_DIR$/php/admin/expenses.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="177" column="37" selection-start-line="177" selection-start-column="37" selection-end-line="177" selection-end-column="37" />
+        <state relative-caret-position="21">
+          <caret line="260" column="57" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
           <folding>
-            <element signature="e#950#1532#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#h6#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/admin/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="69" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/admin/my_profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1611">
+          <caret line="117" column="52" selection-start-line="117" selection-start-column="52" selection-end-line="117" selection-end-column="52" />
+          <folding>
+            <element signature="n#script#3;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="e#2255#2479#0#HTML" expanded="true" />
+            <element signature="e#2512#3152#0#HTML" expanded="true" />
+            <element signature="e#2784#2941#0#HTML" expanded="true" />
+            <element signature="e#2998#3126#0#HTML" expanded="true" />
+            <element signature="e#3271#3525#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
