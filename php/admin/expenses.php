@@ -194,7 +194,7 @@
                 <ul class="collapsible" data-collapsible="accordion">
                     <?php
                         while($rpending = mysqli_fetch_assoc($pen)){
-                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='circle responsive-img' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."<strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
+                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='materialboxed' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."    <strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
                         }
                     ?>
                 </ul>
@@ -220,8 +220,8 @@
                     <?php
                        while($raccepted = mysqli_fetch_assoc($acc)){
                          echo "<li>
-                        <div class=\"collapsible-header\"><img alt='Image here' src='".$raccepted["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$raccepted["full_name"]." <strong>".$raccepted["name"]."</strong></span><span class=\"badge\">NGN".$raccepted["price"]."</span></div>
-                        <div class=\"collapsible-body\"><span>".$raccepted["description"].".".$raccepted["date_approved"]."</span></div>
+                        <div class=\"collapsible-header\"><img height='50px' width='50px' alt='Image here' src='".$raccepted["image_path"]."' class=\"materialboxed\"/><span style=\"padding-left: 25px;\">".$raccepted["full_name"]."    <strong>".$raccepted["name"]."</strong></span><span class=\"badge\">NGN".$raccepted["price"]."</span></div>
+                        <div class=\"collapsible-body\"><span>".$raccepted["description"].".<br/>".$raccepted["date_approved"]."</span></div>
                     </li>";
                        }
                     ?>
@@ -249,8 +249,8 @@
 	                <?php
 		                while($rdeclined = mysqli_fetch_assoc($dec)){
 			                echo "<li>
-                        <div class=\"collapsible-header\"><img alt='Image here' src='".$rdeclined["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]." <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
-                        <div class=\"collapsible-body\"><span>".$rdeclined["description"].".".$rdeclined["date_approved"]."</span></div>
+                        <div class=\"collapsible-header\"><img height='50px' width='50px' alt='Image here' src='".$rdeclined["image_path"]."' class=\"materialboxed\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]."      <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
+                        <div class=\"collapsible-body\"><span>".$rdeclined["description"].".<br/>".$rdeclined["date_approved"]."</span></div>
                     </li>";
 		                }
 	                ?>
@@ -277,8 +277,8 @@
 	                <?php
 		                while($rcomplete = mysqli_fetch_assoc($com)){
 			                echo "<li>
-                        <div class=\"collapsible-header\"><img alt='Image here' src='".$rcomplete["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rcomplete["full_name"]." <strong>".$rcomplete["name"]."</strong></span><span class=\"badge\">NGN".$rcomplete["price"]."</span></div>
-                        <div class=\"collapsible-body\"><span>".$rcomplete["description"].".".$rcomplete["date_approved"]."</span></div>
+                        <div class=\"collapsible-header\"><img height='50px' width='50px' alt='Image here' src='".$rcomplete["image_path"]."' class=\"materialboxed\"/><span style=\"padding-left: 25px;\">".$rcomplete["full_name"]."      <strong>".$rcomplete["name"]."</strong></span><span class=\"badge\">NGN".$rcomplete["price"]."</span></div>
+                        <div class=\"collapsible-body\"><span>".$rcomplete["description"].".<br/>".$rcomplete["date_approved"]."</span></div>
                     </li>";
 		                }
 	                ?>

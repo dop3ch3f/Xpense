@@ -48,8 +48,9 @@
 				<?php
 					require "../actions/conn.php";
 					
-					function pending($f,$t,$tid,$link){
-						$query = "SELECT * FROM `user_expense` WHERE `team_id` = '$tid' AND `status` = 'Pending' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
+					
+					function pending($f,$t,$uid,$tid,$link){
+						$query = "SELECT * FROM `user_expense` WHERE `user_id` = '$uid' AND `team_id` = '$tid' AND `status` = 'Pending' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
 						$result = mysqli_query($link, $query);
 						echo "<thead>
                                 <tr>
@@ -73,8 +74,8 @@
 					}
 					          echo "</tbody>";
 					}
-					function accepted($f,$t,$tid,$link){
-						$query = "SELECT * FROM `user_expense` WHERE `team_id` = '$tid' AND `status` = 'Approved' AND `date_approved` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_approved` <= DATE_FORMAT('$t','%Y-%m-%d') ";
+					function accepted($f,$t,$uid,$tid,$link){
+						$query = "SELECT * FROM `user_expense` WHERE `user_id` = '$uid' AND `team_id` = '$tid' AND `status` = 'Approved' AND `date_approved` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_approved` <= DATE_FORMAT('$t','%Y-%m-%d') ";
 						$result = mysqli_query($link, $query);
 						echo "<thead>
                                 <tr>
@@ -98,8 +99,8 @@
 						}
 						echo "</tbody>";
 					}
-					function rejected($f,$t,$tid,$link){
-						$query = "SELECT * FROM `user_expense` WHERE `team_id` = '$tid' AND `status` = 'Declined' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
+					function rejected($f,$t,$uid,$tid,$link){
+						$query = "SELECT * FROM `user_expense` WHERE `user_id` = '$uid' AND `team_id` = '$tid' AND `status` = 'Declined' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
 						$result = mysqli_query($link, $query);
 						echo "<thead>
                                 <tr>
@@ -123,8 +124,8 @@
 						}
 						echo "</tbody>";
 					}
-					function complete($f,$t,$tid,$link){
-						$query = "SELECT * FROM `user_expense` WHERE `team_id` = '$tid' AND `receipt_status` = 'Available' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
+					function complete($f,$t,$uid,$tid,$link){
+						$query = "SELECT * FROM `user_expense` WHERE `user_id` = '$uid' AND `team_id` = '$tid' AND `receipt_status` = 'Available' AND `date_created` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_created` <= DATE_FORMAT('$t','%Y-%m-%d')";
 						$result = mysqli_query($link, $query);
 						echo "<thead>
                                 <tr>
@@ -148,8 +149,8 @@
 						}
 						echo "</tbody>";
 					}
-					function receipt($f,$t,$tid,$link){
-						$query = "SELECT * FROM `admin_receipt` WHERE `team_id` = '$tid' AND `rpt_status` = 'Pending' AND `date_posted` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_posted` <= DATE_FORMAT('$t','%Y-%m-%d')";
+					function receipt($f,$t,$uid,$tid,$link){
+						$query = "SELECT * FROM `admin_receipt` WHERE `user_id` = '$uid' AND `team_id` = '$tid' AND `rpt_status` = 'Pending' AND `date_posted` >= DATE_FORMAT('$f','%Y-%m-%d') AND `date_posted` <= DATE_FORMAT('$t','%Y-%m-%d')";
 						$result = mysqli_query($link, $query);
 						echo "<thead>
                                 <tr>
@@ -180,19 +181,19 @@
 						extract($_POST);
 						switch($type){
 							case 'pending':
-								pending($from,$to,$team_id,$link);
+								pending($from,$to,$user_id,$team_id,$link);
 								break;
 							case 'accepted':
-								accepted($from,$to,$team_id,$link);
+								accepted($from,$to,$user_id,$team_id,$link);
 								break;
 							case 'rejected':
-								rejected($from, $to,$team_id,$link);
+								rejected($from, $to,$user_id,$team_id,$link);
 								break;
 							case 'complete':
-								complete($from,$to,$team_id,$link);
+								complete($from,$to,$user_id,$team_id,$link);
 								break;
 							case 'receipt':
-								receipt($from, $to,$team_id,$link);
+								receipt($from, $to,$user_id,$team_id,$link);
 								break;
 							default:
 						}
