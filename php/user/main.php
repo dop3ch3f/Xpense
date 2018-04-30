@@ -17,33 +17,70 @@
   <title>
     Home
   </title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href='../../css/materialize.min.css' rel="stylesheet" />
   <link href='../../css/styles.css' rel="stylesheet" />
   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   <script src='../../js/jquery-3.3.1.min.js'></script>
   <script src='../../js/materialize.min.js'></script>
-  <script>
-    $(document).ready(function () {
-      $('.button-collapse').sideNav({
-        menuWidth: 300,
-        edge: 'left',
-        closeOnClick: true,
-        draggable: true,
-      });
-      $('ul.tabs').tabs('select_tab', 'tab_id');
-    });
-  </script>
+    <script>
+        $(document).ready(function(){
+            $(".button-collapse").sideNav({
+                menuWidth: 300,
+                edge: 'left',
+                closeOnClick: true,
+                draggable: true
+            });
+
+            $('.dropdown-button').dropdown({
+                    inDuration: 300,
+                    outDuration: 225,
+                    constrainWidth: false, // Does not change width of dropdown to that of the activator
+                    hover: false, // Activate on hover
+                    gutter: 0, // Spacing from edge
+                    belowOrigin: true, // Displays dropdown below the button
+                    alignment: 'center', // Displays dropdown with edge aligned to the left of button
+                    stopPropagation: false // Stops event propagation
+                }
+            );
+
+            $('.modal').modal({
+                    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                    opacity: .5, // Opacity of modal background
+                    inDuration: 300, // Transition in duration
+                    outDuration: 200, // Transition out duration
+                    startingTop: '4%', // Starting top style attribute
+                    endingTop: '10%' // Ending top style attribute
+                }
+            );
+
+        })
+    </script>
+    <style>
+        body, .side-nav,.dropdown-content {
+            background: linear-gradient(to right,#c33764,#1d2671);
+            color: whitesmoke !important;
+        }
+        a {
+            color:whitesmoke !important;
+        }
+        nav {
+            background: transparent !important;
+            border: none;
+        }
+        .card-panel a h6,.card-panel a i {
+            color: #2c3e50 !important;
+        }
+    </style>
 </head>
 
 <body>
   <nav>
-    <div class="nav-wrapper white">
-      <a href="#" class="brand-logo center black-text">Dashboard</a>
-      <ul id="nav-mobile" class="left ">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center"><?php echo $row['team_name']; ?></a>
+      <ul id="nav-mobile" class="left">
         <li>
           <a data-activates="slide-out" class="button-collapse show-on-large">
-            <i class="material-icons" style="color:purple;">menu</i>
+            <i class="fas fa-bars" style="color:whitesmoke;"></i>
           </a>
         </li>
 
@@ -51,113 +88,39 @@
     </div>
   </nav>
   <ul id="slide-out" class="side-nav">
-    <li>
-      <div class=" center-align">
-        <br/>
-        <a>
-          <img class="circle" src="<?php echo $row['image_path']; ?>" width="100px" height="100px">
-        </a>
-        <h6><?php echo $row['full_name']; ?></h6>
-        <h6><?php echo $row['email']; ?></h6>
-        <h6><?php echo $row['team_name'];?></h6>
-      </div>
-    </li>
-    <br/>
-    <li>
-      <a href="./main.php">
-        <i class="material-icons waves-effect" style="color:purple;">home</i>Home</a>
-    </li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
-      <a href="./my_profile.php">
-        <i class="material-icons waves-effect" style="color:purple;">person</i>My Profile</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
-    <li>
-      <a href="../actions/login.php?logout=1">
-        <i class="material-icons waves-effect" style="color:purple;">arrow_back</i>Log Out</a>
-    </li>
-
-    <li>
-      <div class="divider"></div>
-    </li>
+      <br/>
+      <br/>
+      <li>
+          <a href="./main.php">Home</a>
+      </li>
+      <li>
+          <a href="./my_profile.php">My Profile</a>
+      </li>
+      <li>
+          <a href="../actions/login.php?logout=1">Log Out</a>
+      </li>
   </ul>
   <br/>
   <br/>
-  <div class="section container">
-    <div class="row">
-      <div class="col s12 m6 l6">
-        <a href="./expenses.php">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img src="../../img/expenses.jpg" width="220" height="250">
+  <div class=" container">
+      <div class="row">
+          <div class="col s12 m6 l6">
+              <a href="./expenses.php">
+                  <div class="card-panel small" style="color: #2c3e50 !important;">
+                      <i class="fas fa-money-bill-alt" style="font-size: 1.7em !important;"></i>
+                      <h6 style="display: inline;padding-left: 25px;">Manage Expenses</h6>
+                  </div>
+              </a>
           </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h5>Expenses</h5>
-            </div>
-
+          <div class="col s12 m6 l6">
+              <a href="./receipts.php">
+                  <div class="card-panel small" style="color: #2c3e50 !important;">
+                      <i class="fas fa-book" style="font-size: 1.7em !important;"></i>
+                      <h6 style="display: inline;padding-left: 25px;">Expense History</h6>
+                  </div>
+              </a>
           </div>
-        </div>
-      </a>
-        
       </div>
-      <div class="col s12 m6 l6">
-        <a href="./receipts.php">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img src="../../img/receipts.jpg" width="220" height="250">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h5>Receipts</h5>
-            </div>
-
-          </div>
-        </div>
-      </a>
-        
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12 m6 l6">
-        <a href="./transactions.php">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img src="../../img/transaction.jpg" width="220" height="250">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h5>Transaction</h5>
-            </div>
-
-          </div>
-        </div>
-      </a>
-        
-      </div>
-      <div class="col s12 m6 l6">
-        <a href="./all_transaction.php">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img src="../../img/alltransaction.jpg" width="220" height="250">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <h5>All Transactions</h5>
-            </div>
-
-          </div>
-        </div>
-      </a>
-        
-      </div>
-    </div>
   </div>
 </body>
 <!-- Modal Structure -->

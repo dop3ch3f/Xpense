@@ -58,7 +58,7 @@
                     inDuration: 300,
                     outDuration: 225,
                     constrainWidth: false, // Does not change width of dropdown to that of the activator
-                    hover: false, // Activate on hover
+                    hover: true, // Activate on hover
                     gutter: 1, // Spacing from edge
                     belowOrigin: true, // Displays dropdown below the button
                     alignment: 'left', // Displays dropdown with edge aligned to the left of button
@@ -95,6 +95,9 @@
         }
         nav {
             background: transparent !important;
+        }
+        input {
+            color: #2c3e50 !important;
         }
         .card-panel a h6,.card-panel a i {
             color: #2c3e50 !important;
@@ -172,55 +175,52 @@
                 </ul>
             </div>
             <div id="pending" class="col s12">
-                <form class="dateform col s12" action="./expense_report.php" method="POST">
-                    <div class="row">
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_prefix" type="text" name="from" class="datepicker">
-                            <label for="icon_prefix">From:</label>
-                        </div>
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_telephone" type="text" name="to" class="datepicker">
-                            <label for="icon_telephone">To:</label>
-                        </div>
-                        <div class="input-field inline col s4">
-                            <button class=" btn btn-small purple" type="submit" name="type" value="pending"><i class="fas fa-search"></i></button>
-                        </div>
-                        
+                <form class="dateform col s12 center-align" action="./expense_report.php" method="POST">
+                    <div class="input-field col s6 m6 l4 ">
+                        <span style="color: #2c3e50 !important;">From:</span>
+                        <input  type="date" name="from" >
+                    </div>
+                    <div class="input-field" style="display: none !important;">
+                        <input name="team_id" type="hidden" value="<?php echo $row1["team_id"]; ?>"/>
+                    </div>
+                    <div class="input-field col s6 m6 l4">
+                        <span style="color: #2c3e50 !important;">To:</span>
+                        <input  type="date" name="to" >
+                    </div>
+                    <div class="input-field col s12 m12 l4">
+                        <button class="btn purple " type="submit" name="type" value="pending"><i class="fas fa-search"></i> </button>
                     </div>
                 </form>
                 <ul class="collapsible" data-collapsible="accordion">
                     <?php
                         while($rpending = mysqli_fetch_assoc($pen)){
-                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='circle responsive-img'/><span style='padding-left:25px;'>".$rpending["full_name"]."<strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
+                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='circle responsive-img' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."<strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
                         }
                     ?>
                 </ul>
             </div>
             <div id="accepted" class="col s12">
-                <form class="dateform col s12" method="post">
-                    <div class="row">
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_prefix" type="text" name="from" class="datepicker">
-                            <label for="icon_prefix">From:</label>
-                        </div>
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_telephone" type="text" name="to" class="datepicker">
-                            <label for="icon_telephone">To:</label>
-                        </div>
-                        <div class="input-field inline col s4">
-                            <button class=" btn btn-small purple" type="submit" name="type" value="accepted"><i class="fas fa-search"></i></button>
-                        </div>
+                <form class="dateform col s12 center-align" action="./expense_report.php" method="POST">
+                    <div class="input-field col s6 m6 l4 ">
+                        <span style="color: #2c3e50 !important;">From:</span>
+                        <input  type="date" name="from" >
+                    </div>
+                    <div class="input-field" style="display: none !important;">
+                        <input name="team_id" type="hidden" value="<?php echo $row1["team_id"]; ?>"/>
+                    </div>
+                    <div class="input-field col s6 m6 l4">
+                        <span style="color: #2c3e50 !important;">To:</span>
+                        <input  type="date" name="to" >
+                    </div>
+                    <div class="input-field col s12 m12 l4">
+                        <button class="btn purple " type="submit" name="type" value="accepted"><i class="fas fa-search"></i> </button>
                     </div>
                 </form>
                 <ul class="collapsible" data-collapsible="accordion">
                     <?php
                        while($raccepted = mysqli_fetch_assoc($acc)){
                          echo "<li>
-                        <div class=\"collapsible-header\"><img src='".$raccepted["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$raccepted["full_name"]." <strong>".$raccepted["name"]."</strong></span><span class=\"badge\">NGN".$raccepted["price"]."</span></div>
+                        <div class=\"collapsible-header\"><img alt='Image here' src='".$raccepted["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$raccepted["full_name"]." <strong>".$raccepted["name"]."</strong></span><span class=\"badge\">NGN".$raccepted["price"]."</span></div>
                         <div class=\"collapsible-body\"><span>".$raccepted["description"].".".$raccepted["date_approved"]."</span></div>
                     </li>";
                        }
@@ -229,28 +229,27 @@
 
             </div>
             <div id="declined" class="col s12">
-                <form class="dateform col s12" action="./expense_report.php" method="post">
-                    <div class="row">
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_prefix" type="text" name="from" class="datepicker">
-                            <label for="icon_prefix">From:</label>
-                        </div>
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_telephone" type="text" name="to" class="datepicker">
-                            <label for="icon_telephone">To:</label>
-                        </div>
-                        <div class="input-field inline col s4">
-                            <button class=" btn btn-small purple" type="submit" name="type" value="declined"><i class="fas fa-search"></i></button>
-                        </div>
+                <form class="dateform col s12 center-align" action="./expense_report.php" method="POST">
+                    <div class="input-field col s6 m6 l4 ">
+                        <span style="color: #2c3e50 !important;">From:</span>
+                        <input  type="date" name="from" >
+                    </div>
+                    <div class="input-field" style="display: none !important;">
+                        <input name="team_id" type="hidden" value="<?php echo $row1["team_id"]; ?>"/>
+                    </div>
+                    <div class="input-field col s6 m6 l4">
+                        <span style="color: #2c3e50 !important;">To:</span>
+                        <input  type="date" name="to" >
+                    </div>
+                    <div class="input-field col s12 m12 l4">
+                        <button class="btn purple " type="submit" name="type" value="rejected"><i class="fas fa-search"></i> </button>
                     </div>
                 </form>
                 <ul class="collapsible" data-collapsible="accordion">
 	                <?php
 		                while($rdeclined = mysqli_fetch_assoc($dec)){
 			                echo "<li>
-                        <div class=\"collapsible-header\"><img src='".$rdeclined["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]." <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
+                        <div class=\"collapsible-header\"><img alt='Image here' src='".$rdeclined["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]." <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
                         <div class=\"collapsible-body\"><span>".$rdeclined["description"].".".$rdeclined["date_approved"]."</span></div>
                     </li>";
 		                }
@@ -258,28 +257,27 @@
                 </ul>
             </div>
             <div id="complete" class="col s12">
-                <form class="dateform col s12" action="./expense_report.php" method="post">
-                    <div class="row">
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_prefix" type="text" name="from" class="datepicker">
-                            <label for="icon_prefix">From:</label>
-                        </div>
-                        <div class="input-field col s4 inline">
-                            <i class="far fa-calendar-alt prefix"></i>
-                            <input id="icon_telephone" type="text" name="to" class="datepicker">
-                            <label for="icon_telephone">To:</label>
-                        </div>
-                        <div class="input-field inline col s4">
-                            <button class=" btn btn-small purple" type="submit" name="type" value="complete"><i class="fas fa-search"></i></button>
-                        </div>
+                <form class="dateform col s12 center-align" action="./expense_report.php" method="POST">
+                    <div class="input-field col s6 m6 l4 ">
+                        <span style="color: #2c3e50 !important;">From:</span>
+                        <input  type="date" name="from" >
+                    </div>
+                    <div class="input-field" style="display: none !important;">
+                        <input name="team_id" type="hidden" value="<?php echo $row1["team_id"]; ?>"/>
+                    </div>
+                    <div class="input-field col s6 m6 l4">
+                        <span style="color: #2c3e50 !important;">To:</span>
+                        <input  type="date" name="to" >
+                    </div>
+                    <div class="input-field col s12 m12 l4">
+                        <button class="btn purple " type="submit" name="type" value="complete"><i class="fas fa-search"></i> </button>
                     </div>
                 </form>
                 <ul class="collapsible" data-collapsible="accordion">
 	                <?php
 		                while($rcomplete = mysqli_fetch_assoc($com)){
 			                echo "<li>
-                        <div class=\"collapsible-header\"><img src='".$rcomplete["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rcomplete["full_name"]." <strong>".$rcomplete["name"]."</strong></span><span class=\"badge\">NGN".$rcomplete["price"]."</span></div>
+                        <div class=\"collapsible-header\"><img alt='Image here' src='".$rcomplete["image_path"]."' class=\"circle responsive-img\"/><span style=\"padding-left: 25px;\">".$rcomplete["full_name"]." <strong>".$rcomplete["name"]."</strong></span><span class=\"badge\">NGN".$rcomplete["price"]."</span></div>
                         <div class=\"collapsible-body\"><span>".$rcomplete["description"].".".$rcomplete["date_approved"]."</span></div>
                     </li>";
 		                }

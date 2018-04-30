@@ -2,7 +2,6 @@
 	include '../actions/conn.php';
 	session_start();
 	extract($_SESSION);
-	
 	$q1 = "SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
 	$q2 = "SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id'";
 	$result = mysqli_query($link, $q1);
@@ -255,15 +254,16 @@
     <div class="modal-content">
         <div class="row">
             <div class="col s12 l8 pull-l2 push-l2 m8 pull-m2 push-m2 center">
-                <h5 style="color :#2c3e50 !important;">Create New Team</h5>
+                <h5 style="color :#2c3e50 !important;">Create New Team </h5>
                 <div id="add_form_response" style="color: #2c3e50 !important;"></div>
+                
                 <form id="add_form" action="./mt_add_member.php" method="POST">
                         <div class="input-field">
                             <input name="team_name" id="t0" type="text" placeholder="any plc"/>
                             <label for="t0">Team Name</label>
                         </div>
                         <div class="input-field">
-                            <input name="admin_id" title="hidden" type="text" value="<?php echo $admin_id; ?>" style="display:none;"/>
+                            <input name="admin_id" type="text" value="<?php echo $admin_id; ?>"/>
                         </div>
                         <div class="input-field">
                             <input name="mail[]" id="t1" type="email" placeholder="any@any.com"/>

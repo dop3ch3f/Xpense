@@ -22,7 +22,7 @@ session_start();
 				$headers[] = "To: '$to'  ";
 				$headers[] = 'From: Xpense Hub';
 				mail($to, $subject, $message,implode("\r\n", $headers));
-				header("Location: http://xpensehub.000webhostapp.com/php/admin/main.php");
+				header("Location:./main.php");
 	}
 	
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

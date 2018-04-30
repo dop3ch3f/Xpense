@@ -2,11 +2,8 @@
   include '../actions/conn.php';
   session_start();
   extract($_SESSION);
-  
   $q1="SELECT * FROM `admin_team` WHERE `admin_id` = '$admin_id' LIMIT 1";
-  $q2="SELECT * FROM `admin_expenses` WHERE `status` = 'Pending' AND `admin_id`='$admin_id'";
   $result = mysqli_query($link,$q1);
-  $result1 = mysqli_query($link,$q2);
   $row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
@@ -97,7 +94,7 @@
         function  submitCall(div_id) {
             if (confirm("Click Cancel to Confirm Values Before Submitting and Click Ok to Submit !!") === true) {
                 var form_id = "#"+div_id+"_form";
-                genericAjax(form_id);
+                $(form_id).submit();
             }
         }
         function validate(x){
@@ -157,17 +154,19 @@
     <div class="container">
       <div class="row">
         <div class="col s12 m6 push-m3 pull-m3 l6 push-l3 pull-l3 center-align">
-          <div class="card-panel">
-              <img class="card-header-icon circle black-text" src="<?php echo $row['image_path']; ?>" width="150px" height="150px" alt="No Profile Picture"/>
-                <div class="input-field">
+          <div class="card-panel center-align">
+              <div class="input-field">
+                  <img class="card-image-icon circle black-text" src="<?php echo $row['image_path']; ?>" width="150px" height="150px" alt="No Profile Picture"/>
+              </div>
+              <div class="input-field">
                  <p class="black-text">Username: <?php echo $row['full_name']; ?></p>
-                </div>
-                 <div class="input-field">
+              </div>
+              <div class="input-field">
                  <p class="black-text">Email: <?php echo $row['email']; ?></p>
-                 </div>
-                  <div class="input-field">
+              </div>
+              <div class="input-field">
                       <button class="btn purple modal-trigger" href="#modal2"><i class="far fa-edit"></i></button>
-                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -178,15 +177,16 @@
         <div class="row">
             <div class="col s12 l8 pull-l2 push-l2 m8 pull-m2 push-m2 center">
                 <p style="color :#2c3e50 !important;">Profile Update</p>
+	            
                 <div id="update_form_response" style="color: #2c3e50 !important;"></div>
                 <form id="update_form" method="POST" action="./update.php" enctype="multipart/form-data">
                     <div class="file-field input-field">
                         <div class="btn purple">
                             <span>Attach Picture</span>
-                            <input type="file" name="files[]" multiple accept="image/jpg, image/jpeg, image/png"/>
+                            <input type="file" name="files[]" value="<?php echo $row['image_path'];?>" multiple accept="image/jpg, image/jpeg, image/png"/>
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text"/>
+                            <input class="file-path validate"  type="text"/>
                         </div>
                     </div>
                     <div class="input-field" style="display:none;">
@@ -202,7 +202,7 @@
                     </div>
                     <div class="input-field">
                         <label>New Password:</label>
-                        <input type="password" id="pwd" name="password">
+                        <input type="password" id="pwd" name="password" value="<?php echo $row['password']; ?>">
                     </div>
                     <div class="input-field">
                         <label>Confirm Password:</label>

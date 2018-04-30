@@ -70,8 +70,8 @@
 
             });
             $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                selectMonths: false, // Creates a dropdown to control month
+                selectYears: false, // Creates a dropdown of 15 years to control year,
                 today: 'Today',
                 clear: 'Clear',
                 close: 'Ok'
@@ -80,6 +80,9 @@
         });
     </script>
     <style>
+        input {
+            color: #2c3e50 !important;
+        }
         body, .side-nav,.dropdown-content,.tabs {
             background: linear-gradient(to right,#c33764,#1d2671);
             color: whitesmoke !important;
@@ -154,14 +157,21 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <form class="dateform col s12" action="./expense_report.php" method="POST">
-                    <div class="input-field col s4 m4 l4 inline"><i class="far fa-calendar-alt prefix"></i>
-                        <input id="icon_prefix" type="text" name="from" class="datepicker">
-                        <label for="icon_prefix">From:</label></div>
-                    <div class="input-field col s4 m4 l4 inline"><i class="far fa-calendar-alt prefix"></i>
-                        <input id="icon_telephone" type="text" name="to" class="datepicker">
-                        <label for="icon_telephone">To:</label></div>
-                    <div class="input-field col s4 m4 l4 inline"><button class=" btn btn-small purple" type="submit" name="type" value="receipt"><i class="fas fa-search"></i></button></div>
+                <form class="dateform col s12 center-align" action="./expense_report.php" method="POST">
+                    <div class="input-field col s6 m6 l4 ">
+                        <span style="color: #2c3e50 !important;">From:</span>
+                        <input  type="date" name="from" >
+                        </div>
+                    <div class="input-field" style="display: none !important;">
+                        <input name="team_id" type="hidden" value="<?php echo $row1["team_id"]; ?>"/>
+                    </div>
+                    <div class="input-field col s6 m6 l4">
+                        <span style="color: #2c3e50 !important;">To:</span>
+                        <input  type="date" name="to" >
+                    </div>
+                    <div class="input-field col s12 m12 l4">
+                        <button class="btn purple " type="submit" name="type" value="receipt"><i class="fas fa-search"></i> </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -171,8 +181,8 @@
                     <?php
                         while($rrcpt = mysqli_fetch_assoc($resreceipt)){
                            echo "<li>
-                        <div class='collapsible-header'><img height='100' width='50' src='".$rrcpt["image"]."' class='materialboxed circle'/><span style='padding-left: 25px;'>".$rrcpt["full_name"]."  <strong>  ".$rrcpt["name"]."</strong></span><span class='badge'>NGN".$rrcpt["price"]."</span></div>
-                        <div class='collapsible-body'><span>".$rrcpt["description"].". ".$rrcpt["date_posted"]."<br/><form method='POST' action='./receipt_action.php'>
+                        <div class='collapsible-header'><i class='fas fa-bars' style='color:#2c3e50; font-size: inherit;' ></i><span style='padding-left: 25px;'>".$rrcpt["full_name"]."  <strong>  ".$rrcpt["name"]."</strong></span><span class='badge'>NGN".$rrcpt["price"]."</span></div>
+                        <div class='collapsible-body'><img height='100' width='50' src='".$rrcpt["image"]."' class='materialboxed' alt='Image Here'/><span>".$rrcpt["description"].". ".$rrcpt["date_posted"]."<br/><form method='POST' action='./receipt_action.php'>
                             <button class='btn purple' type='submit' name='accept'  value='".$rrcpt['receipt_id']."'>Accept</button><button class='btn purple' type='submit' name='decline'  value='".$rrcpt['receipt_id']."'>Decline</button></form></span></div>
                     </li>";
                         }
