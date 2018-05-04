@@ -34,14 +34,15 @@ function insert_into_db_plain($post_data) {
 function create_photo( $file_path)
 {
     # Upload the received image file to Cloudinary
-    $result = \Cloudinary\Uploader::upload($file_path, array(
+    if($result = \Cloudinary\Uploader::upload($file_path, array(
             "tags" => "xpense_hub",
-    ));
-
-    unlink($file_path);
-    error_log("Upload result: " . \Xpensehub\ret_var_dump($result));
-    
-    insert_into_db($result,$_POST);
+    ))){
+	    insert_into_db($result,$_POST);
+	    unlink($file_path);
+    }else{
+	    unlink($file_path);
+	    error_log("Upload result: " . \Xpensehub\ret_var_dump($result));
+    }
 }
 #collate Input
 if($_SERVER["REQUEST_METHOD"] == "POST"){

@@ -194,7 +194,7 @@
                 <ul class="collapsible" data-collapsible="accordion">
                     <?php
                         while($rpending = mysqli_fetch_assoc($pen)){
-                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='materialboxed' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."    <strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
+                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='materialboxed' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."    <strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><span></span><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
                         }
                     ?>
                 </ul>

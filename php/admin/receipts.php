@@ -18,7 +18,7 @@
 		$team_id = $row1["team_id"];
 	}
 	#queries
-	$qreceipt = "SELECT * FROM `admin_receipt` WHERE `team_id` = '$team_id'";
+	$qreceipt = "SELECT * FROM `admin_receipt` WHERE `team_id` = '$team_id' AND `rpt_status`='Pending' AND `receipt_status`='Available'";
 	$hs = "SELECT * FROM `admin_team` WHERE `admin_id`='$admin_id' and `team_id`<>'$team_id'";
 	#results
 	$hss = mysqli_query($link, $hs);
@@ -182,8 +182,7 @@
                         while($rrcpt = mysqli_fetch_assoc($resreceipt)){
                            echo "<li>
                         <div class='collapsible-header'><i class='fas fa-bars' style='color:#2c3e50; font-size: inherit;' ></i><span style='padding-left: 25px;'>".$rrcpt["full_name"]."  <strong>  ".$rrcpt["name"]."</strong></span><span class='badge'>NGN".$rrcpt["price"]."</span></div>
-                        <div class='collapsible-body'><img height='100' width='50' src='".$rrcpt["image"]."' class='materialboxed' alt='Image Here'/><span>".$rrcpt["description"].". ".$rrcpt["date_posted"]."<br/><form method='POST' action='./receipt_action.php'>
-                            <button class='btn purple' type='submit' name='accept'  value='".$rrcpt['receipt_id']."'>Accept</button><button class='btn purple' type='submit' name='decline'  value='".$rrcpt['receipt_id']."'>Decline</button></form></span></div>
+                        <div class='collapsible-body'><img height='100' width='100' src='".$rrcpt["image_path"]."' class='materialboxed' alt='Image Here'/><span>".$rrcpt["description"].". ".$rrcpt["date_posted"]."<br/><form method='post' action='./receipt_action.php'><button class='btn purple' name='accept' value='".$rrcpt["receipt_id"]."' type='submit'>Accept</button><button class='btn purple' name='reject' value='".$rrcpt["receipt_id"]."' type='submit'>Decline</button></form></span></div>
                     </li>";
                         }
                     ?>

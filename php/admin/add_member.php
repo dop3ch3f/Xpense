@@ -1,7 +1,7 @@
 <?php
-include "../actions/conn.php";
-ob_start();
-session_start();
+	include "../actions/conn.php";
+	ob_start();
+	session_start();
 	function mailUser($tid, $tn, $members = array())
 	{
 		$GLOBALS['tn'] = $tn;
@@ -32,24 +32,15 @@ session_start();
 		}
 	}
 	
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    extract($_POST);
-    #generate date
-	$date = date("Y:m:d");
-    #generate team id
-	$team_id = mt_rand(0,1000).$team.mt_rand(0,1000);
-    #queries
-    $qq = "INSERT INTO `Teams`( `team_id`,`admin_id`,`team_name`, `date_created`) VALUES ('$team_id','$admin_id','$team_name','$date')";
-   
-    if (mailUser($team_id, $team_name, $mail)) {
-    	if(mysqli_query($link, $qq)){
-    		echo "Team Registered Successfully. Redirecting...";
-    		header("refresh:2;url=./manage_teams.php");
-	    }else{
-    		echo "Something went wrong. Redirecting...";
-		    header("refresh:2;url=./manage_teams.php");
-	    }
-    }
-}
-mysqli_close($link);
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		extract($_POST);
+		if (mailUser($team_id, $team_name, $mail)) {
+			header("refresh:2;url=./manage_teams.php");
+				echo "Team Registered Successfully";
+		}else{
+		echo "Somethings Wrong Somewhere. Redirecting...";
+		header("refresh:2;url=./manage_teams.php");
+		}
+	}
+	mysqli_close($link);
 ?>

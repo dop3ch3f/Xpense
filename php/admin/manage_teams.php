@@ -196,7 +196,7 @@
                                             <input name='t_name' type='text' class='validate' placeholder='input new team name'/>
                                             <input name='t_id' type='text' value='" . $row1['team_id'] . "' style='display:none;'/>
                                             <label for='t_name'>Team Name</label>
-                                            <button type='submit' class='btn  waves-effect purple center'>Save</button>
+                                            <button type='submit' class='btn purple center'>Save</button>
                                             <br/>
                                             <br/>
                                         </div>
@@ -219,19 +219,24 @@
                                         <ul class='collection'>
                                             <form method='POST' action='./mt_delete_user.php'>
                                             <li class='collection-item'>
-                                                <div>" . $row2['full_name'] . "
+                                                <div class='black-text'>" . $row2['full_name'] . ">
                                                    
-                                                    <button type='submit' value='" . $row2['user_id'] . "' name='user_id' class='secondary-content'>
+                                                    <button type='submit' value='" . $row2['user_id'] . "' name='user_id' class='secondary-content btn purple'>
                                                         <i class='far fa-trash-alt'></i>
                                                     </button>
-                                                    
                                                 </div>
                                             </li>
                                             </form>
                                         </ul>
+                                        
                                     </div>";
 					}
-					echo "           </div>
+					echo "   <div class='center-align'>
+                <button class='btn purple center modal-trigger' href='#modal3'>
+                    <i class='fas fa-plus'></i>
+                </button>
+            </div>
+            <br/><br/>        </div>
                    </div>";
 				}
 		       
@@ -263,7 +268,7 @@
                             <label for="t0">Team Name</label>
                         </div>
                         <div class="input-field">
-                            <input name="admin_id" type="text" value="<?php echo $admin_id; ?>"/>
+                            <input name="admin_id" type="hidden" value="<?php echo $admin_id; ?>"/>
                         </div>
                         <div class="input-field">
                             <input name="mail[]" id="t1" type="email" placeholder="any@any.com"/>
@@ -283,5 +288,26 @@
         </div>
     </div>
 </div>
-
+<div id="modal3" class="modal bottom-sheet">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12 l8 pull-l2 push-l2 m8 pull-m2 push-m2 center">
+                <h5 style="color :#2c3e50 !important;">Add Member </h5>
+                <form id="add_form" action="./add_member.php" method="POST">
+                    <div class="input-field">
+                        <input name="team_id" type="hidden" value="<?php echo $team_id; ?>"/>
+                    </div>
+                    <div class="input-field">
+                        <input name="team_name" type="hidden" value="<?php echo $row1["team_name"]; ?>"/>
+                    </div>
+                    <div class="input-field">
+                        <input name="mail[]" id="t1" type="email" placeholder="any@any.com"/>
+                        <label for="t1">1st Member Email</label>
+                    </div>
+                    <button class="btn purple center" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </html>
