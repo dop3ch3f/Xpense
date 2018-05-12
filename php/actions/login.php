@@ -21,7 +21,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		  if(mysqli_num_rows($ures)>0){
 			  $row=mysqli_fetch_assoc($ures);
 			  $_SESSION['user_id'] = $row['user_id'];
-			  $_SESSION['team_id'] = $row['team_id'];
 			  header("Location:../user/main.php");
 		  }else{
 			  $logout = "Email/Password is incorrect";

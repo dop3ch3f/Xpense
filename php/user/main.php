@@ -1,11 +1,30 @@
 <?php
   require "../actions/conn.php"; 
   session_start();
-  extract($_SESSION); 
-  
-  $q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id'";
-  $result = mysqli_query($link,$q1);
-  $row = mysqli_fetch_assoc($result);
+	if($_SERVER["REQUEST_METHOD"]=="POST"){
+		extract($_POST);
+		session_start();
+		$_SESSION["user_id"] = $user_id;
+	}else{
+		$q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id' LIMIT 1";
+		$result = mysqli_query($link,$q1);
+		$row = mysqli_fetch_assoc($result);
+		$_SESSION['team_id'] = $row1['team_id'];
+	}
+	extract($_SESSION);
+	if($_SESSION["user_id"]) {
+		$q1="SELECT * FROM `user_team` WHERE `user_id` = '$user_id'  LIMIT 1";
+		$row = mysqli_query($link,$q1);
+		$row1 =  mysqli_fetch_assoc($row);
+		$team_id = $row1["team_id"];
+	}else{
+		$q1 = "SELECT * FROM `user_team` WHERE `user_id` = '$user_id' LIMIT 1";
+		$row = mysqli_query($link, $q1);
+		$row1 = mysqli_fetch_assoc($row);
+		$team_id = $row1["team_id"];
+	}
+	$hs = "SELECT * FROM `user_team` WHERE `team_id`<>'$team_id' AND `email` = '".$row1['email']."' AND `password` = '".$row1['password']."'";
+	$hss = mysqli_query($link, $hs);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,16 +75,17 @@
         })
     </script>
     <style>
-        body, .side-nav,.dropdown-content {
+        body, .side-nav {
             background: linear-gradient(to right,#c33764,#1d2671);
             color: whitesmoke !important;
         }
         a {
             color:whitesmoke !important;
         }
-        nav {
+        nav,.dropdown-content, .dropdown-content:hover {
             background: transparent !important;
             border: none;
+            color: transparent !important;
         }
         .card-panel a h6,.card-panel a i {
             color: #2c3e50 !important;
@@ -76,7 +96,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center"><?php echo $row['team_name']; ?></a>
+      <a href="#" class="brand-logo center"><?php echo $row1['team_name']; ?></a>
       <ul id="nav-mobile" class="left">
         <li>
           <a data-activates="slide-out" class="button-collapse show-on-large">
@@ -85,6 +105,20 @@
         </li>
 
       </ul>
+        <ul class="right">
+            <li>
+                <a href='#' data-activates='hotswitch' class="dropdown-button"><i class="fas fa-user-circle" style="color:whitesmoke;font-size: 1.3em !important;"></i></a>
+            </li>
+            <ul id='hotswitch' class='dropdown-content'>
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+				    <?php
+					    while($rhs = mysqli_fetch_assoc($hss)){
+						    echo "<li><button class='btn purple' name='user_id' type='submit' value='".$rhs["user_id"]."'>".$rhs["team_name"]."</button></li>";
+					    }
+				    ?>
+                </form>
+            </ul>
+        </ul>
     </div>
   </nav>
   <ul id="slide-out" class="side-nav">

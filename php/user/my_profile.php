@@ -179,7 +179,7 @@
         <div class="row">
             <div class="col s12 l8 pull-l2 push-l2 m8 pull-m2 push-m2 center">
                 <p style="color :#2c3e50 !important;">Profile Update</p>
-
+                <p style="color :#2c3e50 !important;">Note: Any change would be applied for the account linked to the current team</p>
                 <div id="update_form_response" style="color: #2c3e50 !important;"></div>
                 <form id="update_form" method="POST" action="./update.php" enctype="multipart/form-data">
                     <div class="file-field input-field">
