@@ -58,7 +58,7 @@
                     inDuration: 300,
                     outDuration: 225,
                     constrainWidth: false, // Does not change width of dropdown to that of the activator
-                    hover: true, // Activate on hover
+                    hover: false, // Activate on hover
                     gutter: 1, // Spacing from edge
                     belowOrigin: true, // Displays dropdown below the button
                     alignment: 'left', // Displays dropdown with edge aligned to the left of button
@@ -194,7 +194,7 @@
                 <ul class="collapsible" data-collapsible="accordion">
                     <?php
                         while($rpending = mysqli_fetch_assoc($pen)){
-                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='materialboxed' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."    <strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$qpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><span></span><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
+                            echo "<li><div class='collapsible-header'><img height='50' width='50' src='".$rpending["image_path"]."' class='materialboxed' alt='Image here'/><span style='padding-left:25px;'>".$rpending["full_name"]."    <strong>".$rpending["name"]."</strong></span><span class='badge'>NGN".$rpending["price"]."</span></div><div class='collapsible-body'><span>".$rpending["description"].".".$rpending["date_created"]."<br/><br/><form method='post' action='./expense_post.php'><button class='btn purple' name='accept' value='".$rpending["expense_id"]."' type='submit'>Accept</button><span></span><button class='btn purple' name='reject' value='".$rpending["expense_id"]."' type='submit'>Decline</button></form></span></div></li>";
                         }
                     ?>
                 </ul>

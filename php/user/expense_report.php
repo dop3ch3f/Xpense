@@ -39,6 +39,18 @@
 </head>
 
 <body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Expense Report</a>
+        <ul id="nav-mobile" class="left">
+            <li>
+                <a  class="btn purple  show-on-large" href="./main.php">
+                    Back to Home
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <br/>
 <br/>
 <div class="container">
