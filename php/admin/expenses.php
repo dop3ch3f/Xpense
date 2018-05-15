@@ -18,7 +18,8 @@
 	  $team_id = $row1["team_id"];
   }
   #queries
-  $qpending = "SELECT * FROM `user_expense` WHERE `team_id` = '$team_id' AND `status` = 'Pending' LIMIT 15 ";
+  $aexpense = "SELECT * FROM `Expense` WHERE `team_id` = '$team_id' AND `user_id` is NULL ORDER BY `date_approved` DESC ";
+  $qpending = "SELECT * FROM `user_expense` WHERE `team_id` = '$team_id' AND `status` = 'Pending' LIMIT 15";
   $qaccepted = "SELECT * FROM `user_expense` WHERE `team_id` = '$team_id' AND `status` = 'Approved' LIMIT 15 ";
   $qdeclined = "SELECT * FROM `user_expense` WHERE `team_id` = '$team_id' AND `status` = 'Declined' LIMIT 15";
   $qcomplete = "SELECT * FROM `user_expense` WHERE `team_id` = '$team_id' AND `receipt_status` = 'Available' LIMIT 15";
@@ -28,6 +29,7 @@
   $acc= mysqli_query($link, $qaccepted);
   $dec= mysqli_query($link, $qdeclined);
   $com= mysqli_query($link, $qcomplete);
+  $acom = mysqli_query($link, $aexpense);
   $hss = mysqli_query($link, $hs);
 	
 ?>
@@ -67,7 +69,6 @@
             );
             $('.collapsible').collapsible({
                 accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-                
             });
             $('ul.tabs').tabs();
             $('.modal').modal({
@@ -249,7 +250,7 @@
 	                <?php
 		                while($rdeclined = mysqli_fetch_assoc($dec)){
 			                echo "<li>
-                        <div class=\"collapsible-header\"><img height='50px' width='50px' alt='Image here' src='".$rdeclined["image_path"]."' class=\"materialboxed\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]."      <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
+                        <div class=\"collapsible-header\"><img height='50px' width='50px' alt='Image' src='".$rdeclined["image_path"]."' class=\"materialboxed\"/><span style=\"padding-left: 25px;\">".$rdeclined["full_name"]."      <strong>".$rdeclined["name"]."</strong></span><span class=\"badge\">NGN".$rdeclined["price"]."</span></div>
                         <div class=\"collapsible-body\"><span>".$rdeclined["description"].".<br/>".$rdeclined["date_approved"]."</span></div>
                     </li>";
 		                }
@@ -285,7 +286,34 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="#modal1" class="btn purple modal-trigger">Personal Expenses</a>
+            </div>
+        </div>
     </div>
     
 </body>
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        <div class="col s12">
+            <div class="row">
+                <div class="col m8 pull-m2 push-m2 l8 push-l2 pull-l2 s12">
+                    <h5 class="black-text">Admin Expenses</h5>
+                    <br/>
+                    <ul class="collapsible" data-collapsible="accordion">
+		                <?php
+			                while($acomplete = mysqli_fetch_assoc($acom)){
+				                echo "<li>
+                        <div class=\"collapsible-header\"><span style=\"padding-left: 25px;\"><strong>".$acomplete["name"]."</strong></span><span class=\"badge\">NGN".$acomplete["price"]."</span></div>
+                        <div class=\"collapsible-body\"><span>".$acomplete["description"].".<br/>".$acomplete["date_approved"]."</span></div>
+                    </li>";
+			                }
+		                ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </html>

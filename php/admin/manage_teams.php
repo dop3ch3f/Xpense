@@ -20,7 +20,7 @@
     </title>
     <link href='../../css/materialize.min.css' rel="stylesheet"/>
     <link href='../../css/styles.css' rel="stylesheet"/>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <script src='../../js/jquery-3.3.1.min.js'></script>
     <script src='../../js/materialize.min.js'></script>
     <script>
@@ -85,7 +85,9 @@
                 closeOnClick: true,
                 draggable: true
             });
-
+            $('.collapsible').collapsible({
+                accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+            });
             $('.modal').modal({
                     dismissible: true, // Modal can be dismissed by clicking outside of the modal
                     opacity: .2, // Opacity of modal background
@@ -193,7 +195,7 @@
                                         <br/>
                                         <form method='POST' action='./mt_change_name.php'>
                                         <div class='input-field col s12'>
-                                            <input name='t_name' type='text' class='validate' placeholder='input new team name'/>
+                                            <input name='t_name' type='text' class='validate' placeholder='". $row1['team_name'] ."'/>
                                             <input name='t_id' type='text' value='" . $row1['team_id'] . "' style='display:none;'/>
                                             <label for='t_name'>Team Name</label>
                                             <button type='submit' class='btn purple center'>Save</button>
@@ -207,7 +209,7 @@
                                     ";
 					
 					
-					$q3 = "SELECT * FROM `user_team` WHERE `team_name`='" . $row1['team_name'] . "' ";
+					$q3 = "SELECT * FROM `user_team` WHERE `team_name`='" . $row1['team_name'] . "' AND `type`='user' ";
 					$result2 = mysqli_query($link, $q3);
 					
 					
@@ -217,18 +219,39 @@
                                         <h6 style=\"color :#2c3e50 !important;\">Team Members</h6>
                                         <br/>
                                         <ul class='collection'>
-                                            <form method='POST' action='./mt_delete_user.php'>
-                                            <li class='collection-item'>
-                                                <div class='black-text'>" . $row2['full_name'] . ">
-                                                   
-                                                    <button type='submit' value='" . $row2['user_id'] . "' name='user_id' class='secondary-content btn purple'>
-                                                        <i class='far fa-trash-alt'></i>
-                                                    </button>
-                                                </div>
-                                            </li>
-                                            </form>
-                                        </ul>
-                                        
+                                        <form method='post' action='./mt_update_user.php'>
+                                        <li class='collection-item'>
+                                             
+                                             <div class='black-text' style='margin-bottom: 7px !important;' >" . $row2['full_name'] . " <span class='right' ><button type='submit' value='" . $row2['user_id'] . "' name='delete' class='secondary-content btn purple'><i class='far fa-trash-alt'></i></button>
+                                                 <button style='margin-right: 5px !important;' type='submit' value='" .$row2['user_id']. "' name='uupdate' class='secondary-content btn red'><i class='fas fa-user-tie'></i>
+                                                    </button> </span></div>
+                                         
+                                         </li>
+                                         </form>
+                                         </ul>
+                                    </div>";
+					}
+					
+					$q4 = "SELECT * FROM `user_team` WHERE `team_name`='" . $row1['team_name'] . "' AND `type`='admin' ";
+					$result3 = mysqli_query($link, $q4);
+					
+					
+					while ($row3 = mysqli_fetch_assoc($result3)) {
+						echo "         <div  class='col s12'>
+                                        <br/>
+                                        <h6 style=\"color :#2c3e50 !important;\">Admin Team Members</h6>
+                                        <br/>
+                                        <ul class='collection'>
+                                        <form method='post' action='./mt_update_user.php'>
+                                        <li class='collection-item'>
+                                             
+                                             <div class='black-text' style='margin-bottom: 7px !important;' >" . $row3['full_name'] . " <span class='right' ><button type='submit' value='" . $row3['user_id'] . "' name='delete' class='secondary-content btn purple'><i class='far fa-trash-alt'></i></button>
+                                                 <button style='margin-right: 5px !important;' type='submit' value='" .$row3['user_id']. "' name='aupdate' class='secondary-content btn red'><i class='fas fa-user-minus'></i>
+                                                    </button> </span></div>
+                                         
+                                         </li>
+                                         </form>
+                                         </ul>
                                     </div>";
 					}
 					echo "   <div class='center-align'>

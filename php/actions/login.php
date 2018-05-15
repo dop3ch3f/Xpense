@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
   if($_GET['logout']==1){
     session_destroy();
     $logout = "<h4 class=\"is-size-4\">Logout Successful</h4>";
-   header("refresh:3;url=".$server."php/actions/login.php");
+   header("refresh:2;url=".$server."php/actions/login.php");
   }
 }
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -16,13 +16,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $logout= "Please Input Email and Password to Login";
   }else{
 	  if($type == "user"){
-		  $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' LIMIT 1";
+		  $query1="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' AND `type`='user' LIMIT 1";
+		  $query2="SELECT * FROM `Users` WHERE `email`='$email' AND `password`='$password' AND `type`='admin' LIMIT 1";
 		  $ures=mysqli_query($link,$query1);
-		  if(mysqli_num_rows($ures)>0){
-			  $row=mysqli_fetch_assoc($ures);
+		  $ures2=mysqli_query($link,$query2);
+		  if( mysqli_num_rows($ures) > 0){
+			  $row = mysqli_fetch_assoc($ures);
 			  $_SESSION['user_id'] = $row['user_id'];
 			  header("Location:../user/main.php");
-		  }else{
+		  }
+		  elseif( mysqli_num_rows($ures2) > 0) {
+			  $row = mysqli_fetch_assoc($ures2);
+			  $_SESSION['admin_id'] = $row['admin_id'];
+			  header("Location:../admin/main.php");
+          }
+		  else {
 			  $logout = "Email/Password is incorrect";
 		  }
 	  }else{

@@ -107,7 +107,7 @@ $row1 = mysqli_fetch_assoc($result);
         nav {
             background: transparent !important;
         }
-        input {
+        input,textarea {
             color: #2c3e50 !important;
         }
         .card-panel a h6,.card-panel a i {
@@ -310,6 +310,7 @@ $row1 = mysqli_fetch_assoc($result);
                     <input placeholder="Input Item Name" name="name" id="name" type="text">
                     <label for="name">Item Name:</label>
                 </div>
+                
                 <div class="input-field">
                     <input id="price" name="price" type="number" placeholder="Input price in Naira">
                     <label for="price">Price:</label>
