@@ -238,7 +238,6 @@
 					
 					while ($row3 = mysqli_fetch_assoc($result3)) {
 						echo "         <div  class='col s12'>
-                                        <br/>
                                         <h6 style=\"color :#2c3e50 !important;\">Admin Team Members</h6>
                                         <br/>
                                         <ul class='collection'>
